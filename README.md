@@ -1,6 +1,6 @@
 # PAD
 **PROGRAMACIÓN DE APLICACIONES PARA DISPOSITIVOS MÓVILES- Modelo de concepto** \
-Alumnos: Aarón Durán Sánchez, Mateo García Fuentes y Carlos López Martínez \
+Alumnos: Aarón Durán Sánchez (@AaronDur9), Mateo García Fuentes (@mateogar) y Carlos López Martínez (@CharlieGnomo) \
 Vamos a desarrollar un juego con diferentes retos para poner a prueba las capacidades cognitivas de los usuarios. Los retos estimularán la memoria, velocidad de reacción y percepción, además evaluaremos la cultura general de los jugadores con diversas cuestiones de diferentes temas. 
 
 ### 1.- FICHA DE APLICACIÓN
