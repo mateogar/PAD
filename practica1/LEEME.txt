@@ -1,0 +1,2 @@
+Hemos modificado el fichero auxiliar.js, ya que si hacías click sobre el título devolvía valor -1 y no null 
+como se especifica en el valor de retorno de la función "resolveCard". Hemos añadido row >= 0 && col >= 0
