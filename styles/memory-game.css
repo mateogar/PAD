@@ -1,0 +1,25 @@
+#memory-section {}
+
+table .box {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    border-radius: 10px;
+}
+
+table .red-box {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    border-radius: 10px;
+}
+
+#board td {
+    height: 50px;
+    width: 60px;
+    padding: 1px;
+}

@@ -1,46 +1,25 @@
 <!DOCTYPE html>
 <html>
+<!--
+
+    -->
 
 <head>
+    <meta charset="utf-8">
     <title>Game</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Oswald:200,300,400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/grid.css">
+    <link rel="stylesheet" href="styles/memory-game.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="game.js"></script>
 </head>
 
-<body>
-    <section id="team" class="container">
-        <header>
-            <h2>Game</h2>
-        </header>
-        <div class="row">
-            <button id="1" onclick="pulsar(1)" class="col-md-2 btn btn-primary"> </button>
-            <button id="2" onclick="pulsar(2)" class="col-md-2 btn btn-primary"> </button>
-            <button id="3" onclick="pulsar(3)" class="col-md-2 btn btn-primary"> </button>
-            <button id="4" onclick="pulsar(4)" class="col-md-2 btn btn-primary"> </button>
-        </div>
-        <div class="row">
-            <button id="5" onclick="pulsar(5)" class="col-md-2 btn btn-primary"> </button>
-            <button id="6" onclick="pulsar(6)" class="col-md-2 btn btn-primary"></button>
-            <button id="7" onclick="pulsar(7)" class="col-md-2 btn btn-primary"></button>
-            <button id="8" onclick="pulsar(8)" class="col-md-2 btn btn-primary"></button>
-        </div>
-        <div class="row">
-            <button id="9" onclick="pulsar(9)" class="col-md-2 btn btn-primary"> </button>
-            <button id="10" onclick="pulsar(10)" class="col-md-2 btn btn-primary"></button>
-            <button id="11" onclick="pulsar(11)" class="col-md-2 btn btn-primary"></button>
-            <button id="12" onclick="pulsar(12)" class="col-md-2 btn btn-primary"></button>
-        </div>
-        <div class="row">
-            <button id="13" onclick="pulsar(13)" class="col-md-2 btn btn-primary"> </button>
-            <button id="14" onclick="pulsar(14)" class="col-md-2 btn btn-primary"></button>
-            <button id="15" onclick="pulsar(15)" class="col-md-2 btn btn-primary"></button>
-            <button id="16" onclick="pulsar(16)" class="col-md-2 btn btn-primary"></button>
-        </div>
-    </section>
+<body class="container">
+    <table id="board" class="table table-hover">
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="scripts/game.js"></script>
 </body>
 
 </html>
