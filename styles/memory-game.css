@@ -1,13 +1,24 @@
 #memory-section {}
 
-table .box {
+table .blue-box {
     position: relative;
     display: inline-block;
     height: 100%;
     width: 100%;
     background-color: blue;
     border-radius: 10px;
+    /*opacity: 0;
+    transition: opacity 0.2s;
+    will-change: opacity;
+    */
 }
+
+
+/*
+table .blue-box-hover {
+    transform: scale(1.2);
+}
+*/
 
 table .red-box {
     position: relative;
@@ -15,6 +26,15 @@ table .red-box {
     height: 100%;
     width: 100%;
     background-color: red;
+    border-radius: 10px;
+}
+
+table .gray-box {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background-color: gray;
     border-radius: 10px;
 }
 
