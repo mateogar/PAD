@@ -24,7 +24,7 @@
     var timeBar = 0;
 
     //Segundos que dura una ronda.
-    var MAX_TIME = 7;
+    var MAX_TIME = 30;
 
     //Objetivos que le faltan por pulsar esta ronda
     var targetsLeft;
