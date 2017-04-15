@@ -4,20 +4,31 @@
 (function() {
 
     /*Creamos el HTML*/
-    var idCont = 1;
     var html = '<tr><td> <div id="1" class="blue-box"></div></td><td> <div id="2" class="blue-box"></div></td><td> <div id="3" class="blue-box"></div></td><td> <div id="4" class="blue-box"></div></td><td> <div id="5" class="blue-box"></div></td><td> <div id="6" class="blue-box"></div></td><td> <div id="7" class="blue-box"></div></td><td> <div id="8" class="blue-box"></div></td><td> <div id="9" class="blue-box"></div></td><td> <div id="10" class="blue-box"></div></td></tr><tr><td> <div id="11" class="blue-box"></div></td><td> <div id="12" class="blue-box"></div></td><td> <div id="13" class="blue-box"></div></td><td> <div id="14" class="blue-box"></div></td><td> <div id="15" class="blue-box"></div></td><td> <div id="16" class="blue-box"></div></td><td> <div id="17" class="blue-box"></div></td><td> <div id="18" class="blue-box"></div></td><td> <div id="19" class="blue-box"></div></td><td> <div id="20" class="blue-box"></div></td></tr><tr><td> <div id="21" class="blue-box"></div></td><td> <div id="22" class="blue-box"></div></td><td> <div id="23" class="blue-box"></div></td><td> <div id="24" class="blue-box"></div></td><td> <div id="25" class="blue-box"></div></td><td> <div id="26" class="blue-box"></div></td><td> <div id="27" class="blue-box"></div></td><td> <div id="28" class="blue-box"></div></td><td> <div id="29" class="blue-box"></div></td><td> <div id="30" class="blue-box"></div></td></tr><tr><td> <div id="31" class="blue-box"></div></td><td> <div id="32" class="blue-box"></div></td><td> <div id="33" class="blue-box"></div></td><td> <div id="34" class="blue-box"></div></td><td> <div id="35" class="blue-box"></div></td><td> <div id="36" class="blue-box"></div></td><td> <div id="37" class="blue-box"></div></td><td> <div id="38" class="blue-box"></div></td><td> <div id="39" class="blue-box"></div></td><td> <div id="40" class="blue-box"></div></td></tr><tr><td> <div id="41" class="blue-box"></div></td><td> <div id="42" class="blue-box"></div></td><td> <div id="43" class="blue-box"></div></td><td> <div id="44" class="blue-box"></div></td><td> <div id="45" class="blue-box"></div></td><td> <div id="46" class="blue-box"></div></td><td> <div id="47" class="blue-box"></div></td><td> <div id="48" class="blue-box"></div></td><td> <div id="49" class="blue-box"></div></td><td> <div id="50" class="blue-box"></div></td></tr>';
     var maxBoxes = 50;
-    var hiddenBoxes = 35;
-    //Objetivos esta ronda
+    /*
+    Cantidad de cajas visibles, se aumentará en 1 cada ronda.
+     */
+    var hiddenBoxes = 38;
+    /*Objetivos esta ronda
+    Se aumenta en 1 cada 2 rondas.
+    */
     var targets = 3;
+    //Booleano usado para aumentar el número de targets cada 2 rondas
+    var addTargets = false;
+
+    //Aciertos de la partida.
+    var totalHits = 0;
+
     //Objetivos que le faltan por pulsar esta ronda
-    var targetsLeft = 3;
+    var targetsLeft;
+    //Fallos máximos en una ronda
     var MAX_FAILS_ROUND = 3;
-    var failsInRound = 0;
-    var ids = [];
-    var visibleBoxes = [];
-    var targetBoxes = [];
-    var clickTime = false;
+    var failsInRound;
+    var ids;
+    var visibleBoxes;
+    var targetBoxes;
+    var clickTime;
 
     $(document).ready(function() {
         initializeRound();
@@ -28,6 +39,9 @@
         targetsLeft = targets;
         failsInRound = 0;
         clickTime = false;
+        targetBoxes = [];
+        visibleBoxes = [];
+        ids = [];
         initializeBoard();
         /*Escondemos 'hiddenBoxes' elementos*/
 
@@ -58,35 +72,69 @@
 
     function initializeBoard() {
 
-        $('body').append('<table id="board" class="table table-hover"></table>');
+        $('body section').append('<table id="board" class="table table-hover"></table>');
         $('body').append('<h3 id="targetCounter">Left:' + targetsLeft + ' </h3>');
         $('body').append('<h3 id="failCounter">Fails:' + failsInRound + ' </h3>');
         $("#board").append(html);
 
+        /*Este timeout genera la transición para que las cajas aparezcan despacio*/
+        var timeout = setTimeout(function() {
+            for (var i = 1; i < 51; i++) {
+                $('#board #' + i).addClass('blue-box-hover');
+            }
+            clearTimeout(timeout);
+        }, 0);
 
     }
 
+    /*
+    Se llama a este método cuando acierta un target.
+     */
     function updateTargetCounter() {
         targetsLeft--;
+        totalHits++;
         $('#targetCounter').html('Left: ' + targetsLeft);
+        $('#totalHits').html('Hits: ' + totalHits);
         if (targetsLeft === 0) {
-            deleteBoard();
-            /*Se inicia la siguiente ronda con unos segundos de delay*/
-            var timeout = setTimeout(function() {
-                initializeRound();
-                clearTimeout(timeout);
+            nextRound();
 
-            }, 100);
+
 
         }
     }
 
+    /*
+    Se llama a este método cuando pulsa a un box que no es target.
+     */
     function updateFailsCounter() {
         failsInRound++;
         $('#failCounter').html('Fails: ' + failsInRound);
+        //Si falla MAX_FAILS_ROUND se cambia el tablero
+        if (failsInRound >= MAX_FAILS_ROUND) {
+            nextRound();
+        }
 
     }
 
+
+    function nextRound() {
+        /*Se inicia la siguiente ronda con unos segundos de delay*/
+        var timeout = setTimeout(function() {
+            //Tras cada ronda se aumenta el número de boxes visibles
+            hiddenBoxes--;
+            //Cada 2 rondas se aumenta el número de targets
+            if (addTargets) {
+                targets++;
+                addTargets = false;
+            } else
+                addTargets = true;
+
+            deleteBoard();
+            initializeRound();
+            clearTimeout(timeout);
+
+        }, 100);
+    }
 
 
     function getRandomInt(min, max) {

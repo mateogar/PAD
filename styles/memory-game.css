@@ -1,4 +1,22 @@
-#memory-section {}
+body section {
+    position: relative;
+}
+
+body section:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(106, 100, 99, 0.3);
+    border-radius: 10px 10px 10px 10px;
+}
+
+table {
+    z-index: 5;
+}
 
 table .blue-box {
     position: relative;
@@ -7,18 +25,15 @@ table .blue-box {
     width: 100%;
     background-color: blue;
     border-radius: 10px;
-    /*opacity: 0;
-    transition: opacity 0.2s;
+    opacity: 0;
+    transition: opacity 0.5s;
     will-change: opacity;
-    */
+    z-index: 5;
 }
 
-
-/*
 table .blue-box-hover {
-    transform: scale(1.2);
+    opacity: 1;
 }
-*/
 
 table .red-box {
     position: relative;
