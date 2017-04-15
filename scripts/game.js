@@ -9,7 +9,7 @@
     /*
     Cantidad de cajas visibles, se aumentará en 1 cada ronda.
      */
-    var hiddenBoxes = 38;
+    var hiddenBoxes = 35;
     /*Objetivos esta ronda
     Se aumenta en 1 cada 2 rondas.
     */
@@ -19,6 +19,12 @@
 
     //Aciertos de la partida.
     var totalHits = 0;
+
+    //Segundos que han pasado desde iniciarse el timer.
+    var timeBar = 0;
+
+    //Segundos que dura una ronda.
+    var MAX_TIME = 7;
 
     //Objetivos que le faltan por pulsar esta ronda
     var targetsLeft;
@@ -31,9 +37,48 @@
     var clickTime;
 
     $(document).ready(function() {
+        updateTime();
+        countdown();
         initializeRound();
 
     });
+
+    //funcion countdown
+    function countdown() {
+        //inicializaci?n del countdown
+        var width = 0;
+        var elem = document.getElementById("myBar");
+        var idInter;
+        elem.style.width = '0%';
+        idInter = setInterval(function() {
+            width = timeBar * (100 / MAX_TIME);
+            elem.style.width = width + '%';
+            updateTime();
+
+            //Si se acaba el countdown se termina el juego.
+            if (timeBar >= MAX_TIME) {
+                //se limpia el Interval
+                clearInterval(idInter);
+                deleteAll();
+                showScore();
+
+
+            } else {
+                timeBar++;
+            }
+
+        }, 1000);
+    }
+
+    function deleteAll() {
+        deleteBoard();
+        deleteStuff();
+
+    }
+
+    function updateTime() {
+        $('#time').html('Time left: ' + (MAX_TIME - timeBar));
+    }
 
     function initializeRound() {
         targetsLeft = targets;
@@ -62,6 +107,8 @@
         }, 1100);
 
         addListeners();
+
+
     }
 
     function deleteBoard() {
@@ -74,7 +121,7 @@
 
         $('body section').append('<table id="board" class="table table-hover"></table>');
         $('body').append('<h3 id="targetCounter">Left:' + targetsLeft + ' </h3>');
-        $('body').append('<h3 id="failCounter">Fails:' + failsInRound + ' </h3>');
+        $('body').append('<h3 id="failCounter">Fails in round:' + failsInRound + ' </h3>');
         $("#board").append(html);
 
         /*Este timeout genera la transición para que las cajas aparezcan despacio*/
@@ -108,7 +155,7 @@
      */
     function updateFailsCounter() {
         failsInRound++;
-        $('#failCounter').html('Fails: ' + failsInRound);
+        $('#failCounter').html('Fails in round: ' + failsInRound);
         //Si falla MAX_FAILS_ROUND se cambia el tablero
         if (failsInRound >= MAX_FAILS_ROUND) {
             nextRound();
@@ -116,12 +163,18 @@
 
     }
 
+    function deleteStuff() {
+        $('body #c_time').remove();
+        $('body #totalHits').remove();
+    }
+
 
     function nextRound() {
         /*Se inicia la siguiente ronda con unos segundos de delay*/
         var timeout = setTimeout(function() {
             //Tras cada ronda se aumenta el número de boxes visibles
-            hiddenBoxes--;
+            if (hiddenBoxes > 0)
+                hiddenBoxes--;
             //Cada 2 rondas se aumenta el número de targets
             if (addTargets) {
                 targets++;
@@ -203,6 +256,10 @@
         }
 
 
+    }
+
+    function showScore() {
+        $('body').append('<h1>Score: ' + totalHits + '</h1>');
     }
 
 
