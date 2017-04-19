@@ -29,8 +29,8 @@
 		var randSense; //0 Red buttons, 1 Blue buttons
 		randSense = numRandom(0,1);
 		var numButtons = 6;
-		var MIN_VALUE = -15;
-		var MAX_VALUE = 15;
+		var MIN_VALUE = -9;
+		var MAX_VALUE = 9;
 		for (i=0;i<numButtons;i++) {
 			//Generamos la posiciones que tendrán un boton
 			randP = numRandom(0, MAX_FILAS*MAX_COLUM);
@@ -48,6 +48,11 @@
 		}
 		
 		appendButtons(randPosition, randValues, numButtons);
+		if (randSense){
+			$(".round-button").css("background","blue");			
+		}else{
+			$(".round-button").css("background","red");
+		}
     }
 	
 	function numRandom(min, max){
@@ -62,4 +67,3 @@
 			$("#board #"+randPosition[i]).append("<button class='round-button'>" + randValues[i] + "</button>");
 		}
 	}
-	
