@@ -3,6 +3,8 @@
 
 (function() {
 
+
+
     /*Creamos el HTML*/
     var html = '<tr><td> <div id="1" class="blue-box"></div></td><td> <div id="2" class="blue-box"></div></td><td> <div id="3" class="blue-box"></div></td><td> <div id="4" class="blue-box"></div></td><td> <div id="5" class="blue-box"></div></td><td> <div id="6" class="blue-box"></div></td><td> <div id="7" class="blue-box"></div></td><td> <div id="8" class="blue-box"></div></td><td> <div id="9" class="blue-box"></div></td><td> <div id="10" class="blue-box"></div></td></tr><tr><td> <div id="11" class="blue-box"></div></td><td> <div id="12" class="blue-box"></div></td><td> <div id="13" class="blue-box"></div></td><td> <div id="14" class="blue-box"></div></td><td> <div id="15" class="blue-box"></div></td><td> <div id="16" class="blue-box"></div></td><td> <div id="17" class="blue-box"></div></td><td> <div id="18" class="blue-box"></div></td><td> <div id="19" class="blue-box"></div></td><td> <div id="20" class="blue-box"></div></td></tr><tr><td> <div id="21" class="blue-box"></div></td><td> <div id="22" class="blue-box"></div></td><td> <div id="23" class="blue-box"></div></td><td> <div id="24" class="blue-box"></div></td><td> <div id="25" class="blue-box"></div></td><td> <div id="26" class="blue-box"></div></td><td> <div id="27" class="blue-box"></div></td><td> <div id="28" class="blue-box"></div></td><td> <div id="29" class="blue-box"></div></td><td> <div id="30" class="blue-box"></div></td></tr><tr><td> <div id="31" class="blue-box"></div></td><td> <div id="32" class="blue-box"></div></td><td> <div id="33" class="blue-box"></div></td><td> <div id="34" class="blue-box"></div></td><td> <div id="35" class="blue-box"></div></td><td> <div id="36" class="blue-box"></div></td><td> <div id="37" class="blue-box"></div></td><td> <div id="38" class="blue-box"></div></td><td> <div id="39" class="blue-box"></div></td><td> <div id="40" class="blue-box"></div></td></tr><tr><td> <div id="41" class="blue-box"></div></td><td> <div id="42" class="blue-box"></div></td><td> <div id="43" class="blue-box"></div></td><td> <div id="44" class="blue-box"></div></td><td> <div id="45" class="blue-box"></div></td><td> <div id="46" class="blue-box"></div></td><td> <div id="47" class="blue-box"></div></td><td> <div id="48" class="blue-box"></div></td><td> <div id="49" class="blue-box"></div></td><td> <div id="50" class="blue-box"></div></td></tr>';
     var maxBoxes = 50;
@@ -37,11 +39,16 @@
     var clickTime;
 
     $(document).ready(function() {
+        startGame();
+    });
+
+    function startGame() {
+        initializeTemplate();
         updateTime();
         countdown();
         initializeRound();
 
-    });
+    }
 
     //funcion countdown
     function countdown() {
@@ -78,6 +85,16 @@
 
     function updateTime() {
         $('#time').html('Time left: ' + (MAX_TIME - timeBar));
+    }
+
+    function initializeTemplate() {
+        $('body').append('<div id="c_time" class="cab-block"></div>');
+        $('body #c_time').append('<div id="myProgress"></div>');
+        $('body #c_time #myProgress').append('<div id="myBar"></div>');
+        $('body #c_time').append('<h3 id="time">Time Left: 30</h3>');
+        $('body').append('<h3 id="totalHits">Hits: 0 </h3>');
+        $('body').append('<section> </section>');
+
     }
 
     function initializeRound() {
@@ -304,5 +321,13 @@
 
         });
     }
+
+
+
+
+    define('MyApp', function() {
+        alert('funciona bien');
+    });
+
 
 })();
