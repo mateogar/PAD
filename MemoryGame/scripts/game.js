@@ -6,8 +6,27 @@
 
 
     /*Creamos el HTML*/
-    var html = '<tr><td> <div id="1" class="blue-box"></div></td><td> <div id="2" class="blue-box"></div></td><td> <div id="3" class="blue-box"></div></td><td> <div id="4" class="blue-box"></div></td><td> <div id="5" class="blue-box"></div></td><td> <div id="6" class="blue-box"></div></td><td> <div id="7" class="blue-box"></div></td><td> <div id="8" class="blue-box"></div></td><td> <div id="9" class="blue-box"></div></td><td> <div id="10" class="blue-box"></div></td></tr><tr><td> <div id="11" class="blue-box"></div></td><td> <div id="12" class="blue-box"></div></td><td> <div id="13" class="blue-box"></div></td><td> <div id="14" class="blue-box"></div></td><td> <div id="15" class="blue-box"></div></td><td> <div id="16" class="blue-box"></div></td><td> <div id="17" class="blue-box"></div></td><td> <div id="18" class="blue-box"></div></td><td> <div id="19" class="blue-box"></div></td><td> <div id="20" class="blue-box"></div></td></tr><tr><td> <div id="21" class="blue-box"></div></td><td> <div id="22" class="blue-box"></div></td><td> <div id="23" class="blue-box"></div></td><td> <div id="24" class="blue-box"></div></td><td> <div id="25" class="blue-box"></div></td><td> <div id="26" class="blue-box"></div></td><td> <div id="27" class="blue-box"></div></td><td> <div id="28" class="blue-box"></div></td><td> <div id="29" class="blue-box"></div></td><td> <div id="30" class="blue-box"></div></td></tr><tr><td> <div id="31" class="blue-box"></div></td><td> <div id="32" class="blue-box"></div></td><td> <div id="33" class="blue-box"></div></td><td> <div id="34" class="blue-box"></div></td><td> <div id="35" class="blue-box"></div></td><td> <div id="36" class="blue-box"></div></td><td> <div id="37" class="blue-box"></div></td><td> <div id="38" class="blue-box"></div></td><td> <div id="39" class="blue-box"></div></td><td> <div id="40" class="blue-box"></div></td></tr><tr><td> <div id="41" class="blue-box"></div></td><td> <div id="42" class="blue-box"></div></td><td> <div id="43" class="blue-box"></div></td><td> <div id="44" class="blue-box"></div></td><td> <div id="45" class="blue-box"></div></td><td> <div id="46" class="blue-box"></div></td><td> <div id="47" class="blue-box"></div></td><td> <div id="48" class="blue-box"></div></td><td> <div id="49" class="blue-box"></div></td><td> <div id="50" class="blue-box"></div></td></tr>';
+    const html = '<tr><td> <div id="1" class="blue-box"></div></td><td> <div id="2" class="blue-box"></div></td><td> <div id="3" class="blue-box"></div></td><td> <div id="4" class="blue-box"></div></td><td> <div id="5" class="blue-box"></div></td><td> <div id="6" class="blue-box"></div></td><td> <div id="7" class="blue-box"></div></td><td> <div id="8" class="blue-box"></div></td><td> <div id="9" class="blue-box"></div></td><td> <div id="10" class="blue-box"></div></td></tr><tr><td> <div id="11" class="blue-box"></div></td><td> <div id="12" class="blue-box"></div></td><td> <div id="13" class="blue-box"></div></td><td> <div id="14" class="blue-box"></div></td><td> <div id="15" class="blue-box"></div></td><td> <div id="16" class="blue-box"></div></td><td> <div id="17" class="blue-box"></div></td><td> <div id="18" class="blue-box"></div></td><td> <div id="19" class="blue-box"></div></td><td> <div id="20" class="blue-box"></div></td></tr><tr><td> <div id="21" class="blue-box"></div></td><td> <div id="22" class="blue-box"></div></td><td> <div id="23" class="blue-box"></div></td><td> <div id="24" class="blue-box"></div></td><td> <div id="25" class="blue-box"></div></td><td> <div id="26" class="blue-box"></div></td><td> <div id="27" class="blue-box"></div></td><td> <div id="28" class="blue-box"></div></td><td> <div id="29" class="blue-box"></div></td><td> <div id="30" class="blue-box"></div></td></tr><tr><td> <div id="31" class="blue-box"></div></td><td> <div id="32" class="blue-box"></div></td><td> <div id="33" class="blue-box"></div></td><td> <div id="34" class="blue-box"></div></td><td> <div id="35" class="blue-box"></div></td><td> <div id="36" class="blue-box"></div></td><td> <div id="37" class="blue-box"></div></td><td> <div id="38" class="blue-box"></div></td><td> <div id="39" class="blue-box"></div></td><td> <div id="40" class="blue-box"></div></td></tr><tr><td> <div id="41" class="blue-box"></div></td><td> <div id="42" class="blue-box"></div></td><td> <div id="43" class="blue-box"></div></td><td> <div id="44" class="blue-box"></div></td><td> <div id="45" class="blue-box"></div></td><td> <div id="46" class="blue-box"></div></td><td> <div id="47" class="blue-box"></div></td><td> <div id="48" class="blue-box"></div></td><td> <div id="49" class="blue-box"></div></td><td> <div id="50" class="blue-box"></div></td></tr>';
     var maxBoxes = 50;
+    var level = ['LOW', 'MEDIUM', 'HIGH'];
+    //Booleano usado para aumentar el número de targets cada 2 rondas
+    var addTargets = false;
+    //Aciertos de la partida.
+    var totalHits = 0;
+    //Segundos que han pasado desde iniciarse el timer.
+    var timeBar = 0;
+
+    //Segundos que dura una ronda.
+    var MAX_TIME = 30;
+    //Objetivos que le faltan por pulsar esta ronda
+    var targetsLeft;
+
+    var failsInRound;
+    var ids;
+    var visibleBoxes;
+    var targetBoxes;
+    var clickTime;
+
     /*
     Cantidad de cajas visibles, se aumentará en 1 cada ronda.
      */
@@ -16,38 +35,37 @@
     Se aumenta en 1 cada 2 rondas.
     */
     var targets = 3;
-    //Booleano usado para aumentar el número de targets cada 2 rondas
-    var addTargets = false;
-
-    //Aciertos de la partida.
-    var totalHits = 0;
-
-    //Segundos que han pasado desde iniciarse el timer.
-    var timeBar = 0;
-
-    //Segundos que dura una ronda.
-    var MAX_TIME = 30;
-
-    //Objetivos que le faltan por pulsar esta ronda
-    var targetsLeft;
     //Fallos máximos en una ronda
     var MAX_FAILS_ROUND = 3;
-    var failsInRound;
-    var ids;
-    var visibleBoxes;
-    var targetBoxes;
-    var clickTime;
 
-    $(document).ready(function() {
-        startGame();
-    });
+startGame();
+
+
 
     function startGame() {
+        let currentLevel = "MEDIUM";
         initializeTemplate();
+        initializeVariables(currentLevel);
         updateTime();
         countdown();
         initializeRound();
 
+    }
+
+    function initializeVariables(currentLevel) {
+        if (currentLevel === level[0]) {
+            hiddenBoxes = 38;
+            targets = 2;
+            MAX_FAILS_ROUND = 3;
+        } else if (currentLevel === level[1]) {
+            hiddenBoxes = 35;
+            targets = 3;
+            MAX_FAILS_ROUND = 3;
+        } else if (currentLevel === level[2]) {
+            hiddenBoxes = 33;
+            targets = 4;
+            MAX_FAILS_ROUND = 2;
+        }
     }
 
     //funcion countdown
@@ -324,10 +342,6 @@
 
 
 
-
-    define('MyApp', function() {
-        alert('funciona bien');
-    });
 
 
 })();

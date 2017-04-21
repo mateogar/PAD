@@ -1,0 +1,31 @@
+.cab-block {
+    width: 33%;
+    float: left;
+    margin-bottom: 1%;
+    padding-top: 1%;
+}
+
+#c_time {
+    background-color: #A5B5C7;
+    color: white;
+    width: 100%;
+}
+
+p {
+    margin: 0px;
+}
+
+#myProgress {
+    width: 100%;
+    background-color: white;
+}
+
+#myBar {
+    width: 1%;
+    height: 29px;
+    background-color: rgb(201, 22, 206);
+}
+
+h2 {
+    margin: 0px;
+}

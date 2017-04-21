@@ -1,0 +1,20 @@
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.options ul {
+    list-style: none;
+}
+
+.options div {
+    width: 50%;
+    height: 50px;
+    background-color: orange;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+.options div:hover {
+    background-color: blue;
+}

@@ -1,0 +1,59 @@
+{
+
+    "Arte y Literatura": [{
+
+        "question": "¿Quién pintó el 'Gernika'?",
+        "options": [
+            "Salvador Dalí",
+            "Francisco de Goya",
+            "Pablo Picasso",
+            "Van Vogh"
+        ],
+        "answer": "3"
+    }, {
+
+        "question": "¿Quién escribió 'Don Quijote de la Mancha'?",
+        "options": [
+            "Lope de Vega",
+            "Miguel de Cervantes",
+            "Francisco de Quevedo",
+            "Camilo José Cela"
+        ],
+        "answer": "2"
+    }],
+    "deportes": {
+        "q1": {
+            "question": "Which one is correct team name in NBA?",
+            "options": [
+                "New York Bulls",
+                "Los Angeles Kings",
+                "Golden State Warriros",
+                "Huston Rocket"
+            ],
+            "answer": "Huston Rocket"
+        }
+    },
+    "maths": {
+        "q1": {
+            "question": "5 + 7 = ?",
+            "options": [
+                "10",
+                "11",
+                "12",
+                "13"
+            ],
+            "answer": "12"
+        },
+        "q2": {
+            "question": "12 - 8 = ?",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "answer": "4"
+        }
+    }
+
+}
