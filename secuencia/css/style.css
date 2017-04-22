@@ -1,16 +1,32 @@
-#board{
-	align: center;
-	margin-top: 10%;
+body{
 	background: darkgrey;
 }
 
-.cell{
-	/*border: 1px solid;*/
-	padding: 2px;
+/*Contador*/
+#myProgress {
+    background-color: white;
+}
+#myBar {
+    width: 1%;
+    height: 29px;
+    background-color: rgb(201, 22, 206);
+}
+
+#rounds{
+	text-align: center;
+}
+
+#success{
+	text-align: center;
+}
+
+#board{
+	margin:2% auto;
 }
 
 .round-button{
-	border: 15px solid #f5f5f5;
+	font-size: 15px;
+	border: red;	
 	border-radius: 50%;
-	margin-left: 30%;
+	font-color: white;
 }
