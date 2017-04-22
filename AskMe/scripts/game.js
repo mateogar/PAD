@@ -2,15 +2,26 @@
 
 
 (function() {
-
+    //En una partida hay una pregunta de cada categoría
     const categories = {
-        0: 'Arte y Literatura'
+        0: 'Arte y Literatura',
+        1: 'Deportes',
+        2: 'Ciencia',
+        3: 'Historia',
+        4: 'Geografía',
+        5: 'Cine y Cultura'
     }
 
     let quiz;
+    let idQuest;
     let idCat = 0;
-    let idQuest = 0;
     const MAX_OPTS = 4;
+    let hits = 0;
+    let fails = 0;
+    //Número de categorías diferentes
+    const MAX_CAT = 6;
+    //Preguntas por categorías
+    const MAX_QUEST = 4;
     //Cargamos el json
     $.getJSON("scripts/questions.json", function(json) {
         quiz = json;
@@ -20,29 +31,109 @@
 
 
     function startGame() {
+        initializeTemplate();
         createQuestion();
     }
 
+    function initializeTemplate() {
+        $('body').append('<div id="question"></div>');
+        $('body #question').append('<h2></h2>');
+        $('body').append('<section class="options col-sm-6"></section>');
+        $('body section').append('<ul></ul>');
+        for (let i = 1; i <= MAX_OPTS; i++) {
+            $('body section ul').append('<div id="' + i + '"></div>');
+            $('body section ul #' + i).append('<li></li>');
+        }
+
+
+        $('body').append('<h3 id="hits">Hits: ' + hits + ' </h3>');
+        $('body').append('<h3 id="fails">Fails: ' + fails + ' </h3>');
+    }
+
+    //En cada ronda hay una pregunta de cada categoría
+
+
+
     function createQuestion() {
+        //El id de la pregunta es aleatorio    
+        idQuest = getRandomInt(0, MAX_QUEST - 1);
+        $('.options div').css("background-color", "orange");
         $('#question h2').html(quiz[categories[idCat]][idQuest].question);
         for (let i = 1; i <= MAX_OPTS; i++) {
-            let id = '.options #' + i;
+            let id = '.options #' + i + ' li';
+
             $(id).html(quiz[categories[idCat]][idQuest].options[i - 1]);
+
+
         }
 
     }
 
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+
+    function removeAll() {
+        $('body section').remove();
+        $('#question').remove();
+        $('h3').remove();
+    }
+
+    function showScore() {
+        $('body').append('<h1>Score: ' + hits + '</h1>');
+        $('body').append('<h1>Fails: ' + fails + '</h1>');
+
+    }
+
+    function nextQuestion() {
+        idCat++; //Se cambia de categoría
+        if (idCat < MAX_CAT - 4)
+            createQuestion();
+        else {
+            //Eliminar el DOM de pregunta y opciones y mostrar la puntuación total
+            removeAll();
+            showScore();
+        }
+
+    }
+
+    function updateHits() {
+        hits++;
+        $('#hits').html('Hits: ' + hits);
+    }
+
+    function updateFails() {
+        fails++;
+        $('#fails').html('Fails: ' + fails);
+    }
 
     function addListeners() {
         /*Ahora se añade el listener a los clicks del jugador sobre las opciones*/
         $(".options div").click(function() {
             //Cuando pulsen una pregunta se comprueba si es la correcta
             if (this.id === quiz[categories[idCat]][idQuest].answer) {
-                $(this).css("background-color", "green");
+                let that = this;
+                $(that).css("background-color", "green");
+                updateHits();
+                var timeoutId1 = setTimeout(function() {
+                    clearTimeout(timeoutId1);
+                    nextQuestion();
+                }, 1000);
+
+
+
             } else {
                 $(this).css("background-color", "red");
-            }
+                updateFails();
+                let that = this;
+                var timeoutId2 = setTimeout(function() {
+                    clearTimeout(timeoutId2);
+                    nextQuestion();
+                }, 1000);
 
+            }
         });
     }
 

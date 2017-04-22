@@ -1,20 +1,37 @@
-h1 {
-    color: #333;
+.options ul {
+    list-style: none;
     text-align: center;
 }
 
-.options ul {
-    list-style: none;
-}
-
 .options div {
-    width: 50%;
+    width: 100%;
     height: 50px;
     background-color: orange;
     margin: 5px;
     transition: background-color 0.3s;
 }
 
+.options .orange {
+    background-color: orange;
+}
+
+.options .red {
+    background-color: red;
+}
+
+.options .green {
+    background-color: red;
+}
+
 .options div:hover {
     background-color: blue;
+}
+
+.options div li {
+    font-size: 1.5em;
+}
+
+#question h2 {
+    font-size: 1.8em;
+    text-align: center;
 }
