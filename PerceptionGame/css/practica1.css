@@ -1,0 +1,82 @@
+td{
+	text-align : center;
+	padding: 2% 0%;
+}
+
+input{
+	width: 100%;
+}
+
+.g-block{
+	padding: 2%;
+	font-size: 25px;
+	font-weight: bold;
+	border: 0px;
+}
+
+#table_cont{
+	clear: both;
+}
+
+.cab-block{
+	width: 33%;
+	float: left;
+	margin-bottom: 1%;
+	padding-top: 1%;
+}
+
+#btn_1{
+	background-color: rgba(255, 152, 0, 0.8);
+}
+
+#btn_2{
+	background-color: rgba(103, 58, 183, 0.64);
+}
+
+#c_acert{
+	background-color: #1FCF00;
+	color: white;
+}
+
+#c_time{
+	background-color: #A5B5C7;
+	color: white;
+	width: 34%;
+}
+
+#c_fail{
+	background-color: #EF1C11;
+	color: white;
+}
+
+#stat_ok{
+	background-color: #1FCF00;
+	color: white;
+}
+
+#stat_wr{
+	background-color: #EF1C11;
+	color: white;
+}
+
+#stat_name{
+	background-color: rgba(255, 152, 0, 0.8);
+}
+
+p{
+	margin: 0px;
+}
+
+#myProgress {
+    width: 100%;
+    background-color: white;
+}
+#myBar {
+    width: 1%;
+    height: 29px;
+    background-color: rgb(201, 22, 206);
+}
+
+h2{
+	margin: 0px;
+}
