@@ -1,4 +1,4 @@
-var NUM_SEG_COUNT =	20;
+var NUM_SEG_COUNT =	10;
 var MAX_FILAS = 6;
 var MAX_COLUM = 6
 var MIN_VALUE = -9;
@@ -37,6 +37,7 @@ function initializeBoard() {
 	}
 	
 	$('#rounds').append('<span> '+round+'</span>');
+	$('#success').append('<span> '+success+'</span>');
 	$('body').append('<div id="board"></div>');
 	$("#board").append(html);
 	
@@ -122,21 +123,22 @@ function play(){
 
 function resetBoard(){
 	$('#rounds span').remove();
+	$('#success span').remove();
 	$('#board').remove();
 }
 
 function checkClick(event){
 	if(event.target.innerHTML == randValues[0]){
 		randValues.shift();
-		console.log("Acierto");
 		$('#'+event.target.id).hide();
-		//$('#'+event.target.id).css("background-color","darkgrey");
-		//$('#'+event.target.id).css("color","darkgrey");
+		if (randValues.length == 0){
+			console.log("Ronda sucesosa");
+			success++;
+			play();
+		}
 	}else{		
-		console.log("Error");
 		play();		
-	}
-	
+	}	
 }
 
 function comparate ( a, b ){ 
