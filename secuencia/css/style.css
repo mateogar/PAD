@@ -30,3 +30,7 @@ body{
 	border-radius: 50%;
 	font-color: white;
 }
+.cell{
+	/*width: 150px;*/
+    height: 40px;
+}
