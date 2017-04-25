@@ -1,7 +1,7 @@
 
 
 # PAD
-**PROGRAMACIÓN DE APLICACIONES PARA DISPOSITIVOS MÓVILES- Modelo de concepto** \
+**PROGRAMACIÓN DE APLICACIONES PARA DISPOSITIVOS MÓVILES- Modelo de concepto**
 
 ### 1.- INTEGRANTES
 Alumnos: Aarón Durán Sánchez , Mateo García Fuentes y Carlos López Martínez. 
