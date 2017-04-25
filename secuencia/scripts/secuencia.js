@@ -1,9 +1,9 @@
-var NUM_SEG_COUNT =	10;
+var NUM_SEG_COUNT =	45;
 var MAX_FILAS = 6;
 var MAX_COLUM = 6
 var MIN_VALUE = -9;
 var MAX_VALUE = 9;
-var numButtons = 6;
+var numButtons = 2;
 var id;
 
 var round = 1;
@@ -20,6 +20,7 @@ $(document).ready(function() {
 	html += '<div id="success" class="alert alert-success col-xs-6"><strong>Success:</strong></div>';
 	html += '</div>';
 	$('body').append(html);
+	move();
 	initializeBoard();
 });
 
@@ -46,10 +47,11 @@ function initializeBoard() {
 }
 
 function initializeRound() {
-	move();
 	
 	randSense = numRandom(0,1);
-	
+	if (numButtons < 6){
+		numButtons++;
+	}
 	for (i=0;i<numButtons;i++) {
 		//Generamos la posiciones que tendrán un boton
 		randP = numRandom(1, MAX_FILAS*MAX_COLUM);
@@ -72,13 +74,14 @@ function initializeRound() {
 		randValues.sort(comparateInverse);
 	}
 	
-	appendButtons(randPosition, randValues, numButtons);
-	
-	if (randSense){
-		$(".round-button").css("background-color","lightblue");	
+	if(randSense){
+		img = 'img/bluecircle.png';
 	}else{
-		$(".round-button").css("background-color","red");
+		img = 'img/redcircle.png';
 	}
+	
+	appendButtons(img);
+	
 }
 
 function numRandom(min, max){
@@ -89,33 +92,43 @@ function numRandom(min, max){
 }
 
 
-function appendButtons(randPosition, randValues, numButtons){
+function appendButtons(img){
 	for (i=0;i<numButtons;i++) {
-		$("#board #"+randPosition[i]).append("<button class='round-button' onclick='checkClick(event)' id='button"+i+"'>" + randValues[i] + "</button>");
+		//$("#board #"+randPosition[i]).append("<button class='round-button' onclick='checkClick(event)' id='button"+i+"'>" + randValues[i] + "</button>");
+		$("#board #"+randPosition[i]).append("<a class='round-button' onclick='checkClick(event)' id='button"+i+"'>"+randValues[i]+"<img src='"+img+"'></button>");
 	}
 }
 
 function move() {
-	//inicializaci?n del contdown
 	var elem = document.getElementById("myBar");
-	elem.style.width = '0%';	
-	var count = 1;
+	elem.style.width = '100%';	
+	var count = NUM_SEG_COUNT;
 	id = setInterval(frame, 1000);
 	
-	function frame() {
-		if (count > NUM_SEG_COUNT) {
-			//se limpia el Interval			
-			play();
-		} else {
-			width = count * (100 / NUM_SEG_COUNT);
-			elem.style.width = width + '%'; 
-			count++;
+	function frame(){
+		
+		width = (100/NUM_SEG_COUNT)*count;
+		elem.style.width = width + '%'; 
+		
+		if (count == 15) {
+			$('#myBar').removeClass('progress-bar-success');
+			$('#myBar').addClass('progress-bar-warning');
 		}
+		
+		if (count == 5) {
+			$('#myBar').removeClass('progress-bar-warning');
+			$('#myBar').addClass('progress-bar-danger');
+		}
+		
+		if (count == 0) {
+			clearInterval(id);
+			finish();
+		}
+		count--;
 	}
 }
 
-function play(){
-	clearInterval(id);			
+function play(){				
 	round++;	
 	resetBoard();
 	initializeBoard();		
@@ -132,7 +145,6 @@ function checkClick(event){
 		randValues.shift();
 		$('#'+event.target.id).hide();
 		if (randValues.length == 0){
-			console.log("Ronda sucesosa");
 			success++;
 			play();
 		}
@@ -142,13 +154,22 @@ function checkClick(event){
 }
 
 function comparate ( a, b ){ 
-	return a - b;
+	return a-b;
 }
 
 function comparateInverse ( a, b ){ 
 	return b-a;
 }
 
+function finish(){
+	$('#board').remove();
+	
+	html =  '<div class="row">';
+	html += '<div id="finish" class="alert alert-warning col-xs-12">The time has finished.<strong> You got '+success+' success of '+round+' rounds.</strong>';
+	html += ' Well done!</div>';
+	html += '</div>';
+	$('body').append(html);
+}
 
 
 

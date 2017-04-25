@@ -6,17 +6,14 @@ body{
 #myProgress {
     background-color: white;
 }
+
 #myBar {
-    width: 1%;
+    width: 20px;
     height: 29px;
-    background-color: rgb(201, 22, 206);
+    /*background-color: rgb(201, 22, 206);*/
 }
 
-#rounds{
-	text-align: center;
-}
-
-#success{
+#rounds , #success , #finish , #myProgress{
 	text-align: center;
 }
 
@@ -24,12 +21,20 @@ body{
 	margin:2% auto;
 }
 
-.round-button{
-	font-size: 15px;
-	border: red;	
-	border-radius: 50%;
-	font-color: white;
+.round-button img{
+	height: 29px;
+	width: 100%;
 }
+
+.round-button{
+    /*background-image: url( '../img/bluecircle.png' );
+    background-size: 20px 29px;
+	background-repeat: no-repeat;
+	height: 29px;
+	font-size: 15px;	
+	color: yellow;*/
+}
+
 .cell{
 	/*width: 150px;*/
     height: 40px;
