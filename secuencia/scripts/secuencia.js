@@ -75,9 +75,9 @@ function initializeRound() {
 	}
 	
 	if(randSense){
-		img = 'img/bluecircle.png';
+		img = 'b';//blue
 	}else{
-		img = 'img/redcircle.png';
+		img = 'r';//red
 	}
 	
 	appendButtons(img);
@@ -94,8 +94,7 @@ function numRandom(min, max){
 
 function appendButtons(img){
 	for (i=0;i<numButtons;i++) {
-		//$("#board #"+randPosition[i]).append("<button class='round-button' onclick='checkClick(event)' id='button"+i+"'>" + randValues[i] + "</button>");
-		$("#board #"+randPosition[i]).append("<a class='round-button' onclick='checkClick(event)' id='button"+i+"'>"+randValues[i]+"<img src='"+img+"'></button>");
+		$("#board #"+randPosition[i]).append("<img src='img/"+randValues[i]+img+".png' class='imgBtn' id='btn"+randValues[i]+"' onclick='checkClick(event)'>");
 	}
 }
 
@@ -121,6 +120,7 @@ function move() {
 		}
 		
 		if (count == 0) {
+			elem.style.width = '0%';
 			clearInterval(id);
 			finish();
 		}
@@ -141,9 +141,10 @@ function resetBoard(){
 }
 
 function checkClick(event){
-	if(event.target.innerHTML == randValues[0]){
+	val = event.target.id.substring(3);
+	if(val == randValues[0]){
 		randValues.shift();
-		$('#'+event.target.id).hide();
+		$('#'+event.target.id).remove();
 		if (randValues.length == 0){
 			success++;
 			play();
