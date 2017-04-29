@@ -37,5 +37,14 @@ body{
 
 .cell{
 	/*width: 150px;*/
-    height: 40px;
+     height: 40px;
+}
+
+.imgBtn{
+	height: 40px;
+}
+
+.imgBtn:active{
+	height: 40px;
+	transform: translate(1px, 1px);
 }
