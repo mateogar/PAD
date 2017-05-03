@@ -18,6 +18,10 @@
     const MAX_OPTS = 4;
     let hits = 0;
     let fails = 0;
+    //Segundos que dura una ronda.
+    var MAX_TIME = 10;
+    //Segundos que han pasado desde iniciarse el timer.
+    var timeBar = 0;
     //Número de categorías diferentes
     const MAX_CAT = 6;
     //Preguntas por categorías
@@ -36,6 +40,7 @@
     }
 
     function initializeTemplate() {
+        initializeTimer();
         $('body').append('<div id="question"></div>');
         $('body #question').append('<h2></h2>');
         $('body').append('<section class="options col-sm-6"></section>');
@@ -53,8 +58,17 @@
     //En cada ronda hay una pregunta de cada categoría
 
 
+    function initializeTimer() {
+        $('body').append('<div id="c_time" class="cab-block"></div>');
+        $('body #c_time').append('<div id="myProgress"></div>');
+        $('body #c_time #myProgress').append('<div id="myBar"></div>');
+        $('body #c_time').append('<h3 id="time"></h3>');
+    }
+
 
     function createQuestion() {
+
+        countdown();
         //El id de la pregunta es aleatorio    
         idQuest = getRandomInt(0, MAX_QUEST - 1);
         $('.options div').css("background-color", "orange");
@@ -69,6 +83,37 @@
 
     }
 
+    //funcion countdown
+    function countdown() {
+        //inicializaci?n del countdown
+        var width = 0;
+        var elem = document.getElementById("myBar");
+        var idInter;
+        elem.style.width = '0%';
+        idInter = setInterval(function() {
+            width = timeBar * (100 / MAX_TIME);
+            elem.style.width = width + '%';
+            updateTime();
+
+            //Si se acaba el countdown se termina el juego.
+            if (timeBar >= MAX_TIME) {
+                //se limpia el Interval
+                clearInterval(idInter);
+                updateFails();
+                nextQuestion();
+
+
+
+            } else {
+                timeBar++;
+            }
+
+        }, 1000);
+    }
+
+    function updateTime() {
+        $('#time').html('Time left: ' + (MAX_TIME - timeBar));
+    }
 
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -79,6 +124,7 @@
         $('body section').remove();
         $('#question').remove();
         $('h3').remove();
+        $('body #c_time').remove();
     }
 
     function showScore() {
@@ -89,9 +135,10 @@
 
     function nextQuestion() {
         idCat++; //Se cambia de categoría
-        if (idCat < MAX_CAT - 4)
+        if (idCat < MAX_CAT) {
             createQuestion();
-        else {
+            timeBar = 0;
+        } else {
             //Eliminar el DOM de pregunta y opciones y mostrar la puntuación total
             removeAll();
             showScore();
