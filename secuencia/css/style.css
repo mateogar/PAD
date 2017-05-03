@@ -1,16 +1,50 @@
-#board{
-	align: center;
-	margin-top: 10%;
+body{
 	background: darkgrey;
 }
 
-.cell{
-	/*border: 1px solid;*/
-	padding: 2px;
+/*Contador*/
+#myProgress {
+    background-color: white;
+}
+
+#myBar {
+    width: 20px;
+    height: 29px;
+    /*background-color: rgb(201, 22, 206);*/
+}
+
+#rounds , #success , #finish , #myProgress{
+	text-align: center;
+}
+
+#board{
+	margin:2% auto;
+}
+
+.round-button img{
+	height: 29px;
+	width: 100%;
 }
 
 .round-button{
-	border: 15px solid #f5f5f5;
-	border-radius: 50%;
-	margin-left: 30%;
+    /*background-image: url( '../img/bluecircle.png' );
+    background-size: 20px 29px;
+	background-repeat: no-repeat;
+	height: 29px;
+	font-size: 15px;	
+	color: yellow;*/
+}
+
+.cell{
+	/*width: 150px;*/
+     height: 40px;
+}
+
+.imgBtn{
+	height: 40px;
+}
+
+.imgBtn:active{
+	height: 40px;
+	transform: translate(1px, 1px);
 }
