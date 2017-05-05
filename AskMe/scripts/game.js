@@ -15,6 +15,7 @@
     let quiz;
     let idQuest;
     let idCat = 0;
+    let interval;
     const MAX_OPTS = 4;
     let hits = 0;
     let fails = 0;
@@ -85,25 +86,22 @@
 
     //funcion countdown
     function countdown() {
-        //inicializaci?n del countdown
+        //inicializacion del countdown
         var width = 0;
         var elem = document.getElementById("myBar");
-        var idInter;
+
         elem.style.width = '0%';
-        idInter = setInterval(function() {
+        interval = setInterval(function() {
             width = timeBar * (100 / MAX_TIME);
             elem.style.width = width + '%';
             updateTime();
 
-            //Si se acaba el countdown se termina el juego.
+            //Si se acaba el countdown se cambia de pregunta
             if (timeBar >= MAX_TIME) {
                 //se limpia el Interval
-                clearInterval(idInter);
+                clearInterval(interval);
                 updateFails();
                 nextQuestion();
-
-
-
             } else {
                 timeBar++;
             }
@@ -164,7 +162,9 @@
                 let that = this;
                 $(that).css("background-color", "green");
                 updateHits();
+                clearInterval(interval);
                 var timeoutId1 = setTimeout(function() {
+
                     clearTimeout(timeoutId1);
                     nextQuestion();
                 }, 1000);
@@ -174,8 +174,10 @@
             } else {
                 $(this).css("background-color", "red");
                 updateFails();
+                clearInterval(interval);
                 let that = this;
                 var timeoutId2 = setTimeout(function() {
+
                     clearTimeout(timeoutId2);
                     nextQuestion();
                 }, 1000);
