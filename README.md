@@ -31,3 +31,5 @@ Toda la aplicación la realizaremos con tecnología web.
 
 ### 4.- ENLACES
 Comunicación entre android y javascript: ( https://jonathanmelgoza.com/blog/comunicacion-entre-android-y-javascript-webview/ , http://android-er.blogspot.com.es/2011/10/call-javascript-inside-webview-from.html )
+
+SDK FACEBOOK en Android: https://developers.facebook.com/docs/android/
