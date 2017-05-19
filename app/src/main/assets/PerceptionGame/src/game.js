@@ -1,18 +1,21 @@
-var rounds = 4;
-var round = 0;
+var rounds = 5;
+var round = 2;
 var cont = 0;
 var num;
 var acertado = false;
 var acerts = 0;
+var numPhases = 0;
 var fails = 0;
 var images = ['img/first.png','img/second.png'];
 var img = true;
 var NUM_SEG_COUNT = 5;
 var id;
+var levels = {"EASY": 2, "MEDIUM": 3, "HARD": 4};
 
-var initializeRound = function(){
+var initializeRound = function(level){
+	round = levels[level];
 	acertado = false;
-	round++;
+	numPhases++;
 	cont = 0;
 }
 
@@ -45,7 +48,7 @@ var pulsado = function(e){
 		fails++;
 		document.getElementById('t-fail').innerHTML = fails;
 	}
-	if(round<rounds){
+	if(numPhases < rounds){
 		playGame();
 	}else{
 		clearInterval(id);
@@ -69,10 +72,9 @@ function move() {
         if (count > NUM_SEG_COUNT) {
 			//se limpia el Interval
             clearInterval(id);
-			
+			fails++;
 			//se llama de nuevo a jugar si quedan rondas
-			if(round < rounds){
-				fails++;
+			if(numPhases < rounds){
 				document.getElementById('t-fail').innerHTML = fails;
 				playGame();
 			}else{
@@ -89,7 +91,7 @@ function move() {
 
 var playGame = function(){
 	clearInterval(id);
-	initializeRound();
+	initializeRound("HARD");
 	startRound();
 	//llamar funcion countdown
 	move();
