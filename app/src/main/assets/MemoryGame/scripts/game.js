@@ -155,8 +155,8 @@ startGame();
     function initializeBoard() {
 
         $('body section').append('<table id="board" class="table table-hover"></table>');
-        $('body').append('<h3 id="targetCounter">Left:' + targetsLeft + ' </h3>');
-        $('body').append('<h3 id="failCounter">Fails in round:' + failsInRound + ' </h3>');
+        $('body').append('<h3 class="counter" id="targetCounter">Left:' + targetsLeft + ' </h3>');
+        $('body').append('<h3 class="counter" id="failCounter">Fails in round:' + failsInRound + ' </h3>');
         $("#board").append(html);
 
         /*Este timeout genera la transición para que las cajas aparezcan despacio*/

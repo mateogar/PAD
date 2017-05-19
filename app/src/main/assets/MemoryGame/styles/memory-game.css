@@ -54,7 +54,12 @@ table .gray-box {
 }
 
 #board td {
-    height: 50px;
-    width: 60px;
-    padding: 1px;
+    height: 9%;
+    width: 9%;
+    padding: 1%;
+}
+
+.counter {
+    display: inline-block;
+    margin-right: 20%;
 }

@@ -10,6 +10,9 @@ var rounds = 0;
 var acerts = 0;
 var fails = 0;
 var id;
+var levels = {"EASY": 50, "MEDIUM": 30, "HARD": 10};
+var level = 50;
+
 
 //N?mero superior de l?mite
 var NUM_LIM = 99;
@@ -18,7 +21,7 @@ var NUM_ABS = 10;
 //N?mero de segundos del countdown
 var NUM_SEG_COUNT = 5;
 
-var operaciones = ['+','-','*','÷'];
+var operaciones = ['+','-','*','/'];
 
 //funci?n para obtener una operaci?n aleatoria
 var operAleatoria = function(flag){
@@ -30,7 +33,7 @@ var operAleatoria = function(flag){
 		case '+': tot = op1 + op2; break;
 		case '-': tot = op1 - op2; break;
 		case '*': tot = op1 * op2; break;
-		case '÷': 
+		case '/': 
 			while(op1%op2 != 0){
 				op1 = Math.round(Math.random()*(NUM_LIM - 1) + 1);
 				op2 = Math.round(Math.random()*(NUM_LIM - 1) + 1);
@@ -84,7 +87,7 @@ var comparar = function(flag){
 	}
 	//llamada a la funci?n jugar para volver a jugar otra ronda si la hubiese
 	if(rounds < NUM_ROUNDS){
-		play();
+		play(level);
 	}else{
 		clearInterval(id);
 		showStats();
@@ -112,7 +115,7 @@ function move() {
 			fails++;
 			//se llama de nuevo a jugar si quedan rondas
 				if(rounds < NUM_ROUNDS){
-					play();
+					play(level);
 				}else{
 					showStats();
 				}
@@ -124,13 +127,15 @@ function move() {
     }
 }
 
-var play = function(){
+var play = function(lvl){
+	level = lvl;
+	NUM_ABS = levels[lvl];
 	rounds++;
 	clearInterval(id);
 	num1 = NUM_ABS + 1;
 	num2 = 0;
 	//sacar operaciones aleatorias
-	while(Math.abs(num1-num2)>NUM_ABS){
+	while((Math.abs(num1-num2)>NUM_ABS) || (num1 == num2)){
 		num1 = operAleatoria(true);
 		num2 = operAleatoria(false);
 	}
@@ -144,11 +149,20 @@ var play = function(){
 }
 
 var showStats = function(){
-	document.getElementById("c_main").innerHTML = "<div id='stat_name' class='g-block'><p> UserName</p></div><div id='stat_ok' class='g-block'><p><span class='glyphicon glyphicon-ok col-sm-6'></span> Corrects: "+acerts+"</p></div><div id='stat_wr' class='g-block'><p><span class='glyphicon glyphicon-remove col-sm-6'></span> Wrongs: "+fails+"</p></div>";
+	document.getElementById("c_main").innerHTML = "<div id='stat_name' class='g-block'><p> UserName</p></div><div id='stat_ok' class='g-block'><p><span class='glyphicon glyphicon-ok col-sm-6'></span> Corrects: "+acerts+"</p></div><div id='stat_wr' class='g-block'><p><span class='glyphicon glyphicon-remove col-sm-6'></span> Wrongs: "+fails+"</p></div></div>";
+	updatePoints();
+}
+
+var updatePoints = function(){
+    window.JSInterface.updatePnts(acerts, fails);
+}
+
+var alertW = function(user){
+    document.getElementById("c_main").innerHTML = "<h1>"+user+"</h1>";
 }
 
 //al cargar la pantalla se llama a la funci?n principal del juego
 window.onload = function(){
-	play();
+	play("EASY");
 }
 
