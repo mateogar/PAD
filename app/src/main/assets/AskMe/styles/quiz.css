@@ -1,13 +1,14 @@
 .options ul {
     list-style: none;
     text-align: center;
+	padding : 0px;
 }
 
 .options div {
     width: 100%;
-    height: 50px;
     background-color: orange;
-    margin: 5px;
+    margin: 5px auto;
+    padding: 5px;
     transition: background-color 0.3s;
 }
 
@@ -28,10 +29,28 @@
 }
 
 .options div li {
-    font-size: 1.5em;
+    font-size: 1.0em;
 }
 
 #question h2 {
-    font-size: 1.8em;
+    font-size: 1.3em;
     text-align: center;
 }
+
+#question{
+	clear: both;
+}
+
+#score{
+	text-align: center;
+}
+
+#hits{
+	color: green;
+}
+
+#fails{
+	color: red;
+}
+
+
