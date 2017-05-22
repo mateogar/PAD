@@ -10,8 +10,9 @@ var rounds = 0;
 var acerts = 0;
 var fails = 0;
 var id;
-var levels = {"EASY": 50, "MEDIUM": 30, "HARD": 10};
-var level = 50;
+var levels = ['LOW', 'MEDIUM', 'HIGH'];
+var level;
+var range;
 
 
 //N?mero superior de l?mite
@@ -23,6 +24,23 @@ var NUM_SEG_COUNT = 5;
 
 var operaciones = ['+','-','*','/'];
 
+
+function initializeVariables(currentLevel) {
+
+        if (currentLevel === levels[0]) {
+            range = 50;
+            level = levels[0];
+        } else if (currentLevel === levels[1]) {
+            range = 30;
+            level = levels[1];
+
+        } else {
+            range = 10;
+            level = levels[2];
+        }
+    }
+
+
 //funci?n para obtener una operaci?n aleatoria
 var operAleatoria = function(flag){
 	var op1 = Math.round(Math.random()*(NUM_LIM - 1) + 1);
@@ -33,7 +51,7 @@ var operAleatoria = function(flag){
 		case '+': tot = op1 + op2; break;
 		case '-': tot = op1 - op2; break;
 		case '*': tot = op1 * op2; break;
-		case '/': 
+		case '/':
 			while(op1%op2 != 0){
 				op1 = Math.round(Math.random()*(NUM_LIM - 1) + 1);
 				op2 = Math.round(Math.random()*(NUM_LIM - 1) + 1);
@@ -53,9 +71,9 @@ var operAleatoria = function(flag){
 	return tot;
 }
 
-	
+
 //funci?n de comparar si la respuesta es la correcta
-//seg?n los resultados de las dos operaciones 
+//seg?n los resultados de las dos operaciones
 var comparar = function(flag){
 	var l_acert = document.getElementById("t-acert");
 	var l_fail = document.getElementById("t-fail");
@@ -87,7 +105,7 @@ var comparar = function(flag){
 	}
 	//llamada a la funci?n jugar para volver a jugar otra ronda si la hubiese
 	if(rounds < NUM_ROUNDS){
-		play(level);
+		play();
 	}else{
 		clearInterval(id);
 		showStats();
@@ -98,10 +116,10 @@ var comparar = function(flag){
 function move() {
 	//inicializaci?n del contdown
     var elem = document.getElementById("myBar");
-	elem.style.width = '0%';	
+	elem.style.width = '0%';
     var count = 1;
     id = setInterval(frame, 1000);
-	
+
     function frame() {
         if (count > NUM_SEG_COUNT) {
 			//se limpia el Interval
@@ -115,21 +133,21 @@ function move() {
 			fails++;
 			//se llama de nuevo a jugar si quedan rondas
 				if(rounds < NUM_ROUNDS){
-					play(level);
+					play();
 				}else{
 					showStats();
 				}
         } else {
 			width = count * (100 / NUM_SEG_COUNT);
-            elem.style.width = width + '%'; 
+            elem.style.width = width + '%';
 			count++;
         }
     }
 }
 
-var play = function(lvl){
-	level = lvl;
-	NUM_ABS = levels[lvl];
+var play = function(){
+
+	NUM_ABS = range;
 	rounds++;
 	clearInterval(id);
 	num1 = NUM_ABS + 1;
@@ -139,11 +157,11 @@ var play = function(lvl){
 		num1 = operAleatoria(true);
 		num2 = operAleatoria(false);
 	}
-	
+
 	//mostrar operaciones en los botones
 	document.getElementById("btn_1").innerHTML = operacion1[0] + " " + operaciones[operacion1[1]] + " " + operacion1[2];
 	document.getElementById("btn_2").innerHTML = operacion2[0] + " " + operaciones[operacion2[1]] + " " + operacion2[2];
-	
+
 	//llamar funcion countdown
 	move();
 }
@@ -154,15 +172,22 @@ var showStats = function(){
 }
 
 var updatePoints = function(){
-    window.JSInterface.updatePnts(acerts, fails);
+    window.JSInterface.updatePnts(acerts, fails, "WIG", this.level);
 }
 
 var alertW = function(user){
     document.getElementById("c_main").innerHTML = "<h1>"+user+"</h1>";
 }
 
+
+    var startGame = function(lvl) {
+    initializeVariables(lvl);
+    play();
+
+    }
+
 //al cargar la pantalla se llama a la funci?n principal del juego
 window.onload = function(){
-	play("EASY");
+    startGame("LOW");
 }
 

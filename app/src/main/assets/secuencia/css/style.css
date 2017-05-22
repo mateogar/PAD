@@ -7,9 +7,14 @@ body{
     background-color: white;
 }
 
+#rounds , #success{
+    margin-bottom : 0px;
+    padding: 2px 0px;
+}
+
 #myBar {
     width: 20px;
-    height: 29px;
+    height: 10px;
     /*background-color: rgb(201, 22, 206);*/
 }
 
@@ -22,7 +27,7 @@ body{
 }
 
 .round-button img{
-	height: 29px;
+	height: 20px;
 	width: 100%;
 }
 
@@ -37,11 +42,11 @@ body{
 
 .cell{
 	/*width: 150px;*/
-     height: 40px;
+     height: 30px;
 }
 
 .imgBtn{
-	height: 40px;
+	height: 30px;
 }
 
 .imgBtn:active{

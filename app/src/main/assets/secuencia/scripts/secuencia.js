@@ -1,4 +1,4 @@
-var NUM_SEG_COUNT =	45;
+var NUM_SEG_COUNT =	5;
 var MAX_FILAS = 6;
 var MAX_COLUM = 6
 var MIN_VALUE = -9;
@@ -14,15 +14,32 @@ var randPosition = [];
 var randValues = [];
 
 
+var level = ['LOW', 'MEDIUM', 'HIGH'];
+
+var currentL;
+
+
 $(document).ready(function() {
 	html =  '<div class="row">';
 	html += '<div id="rounds" class="alert alert-info col-xs-6"><strong>Round:</strong> </div>';
 	html += '<div id="success" class="alert alert-success col-xs-6"><strong>Success:</strong></div>';
 	html += '</div>';
 	$('body').append(html);
+    initializeVariables("MEDIUM");
 	move();
 	initializeBoard();
 });
+
+
+ function initializeVariables(currentLevel) {
+        if (currentLevel === level[0]) {
+            currentL = level[0];
+        } else if (currentLevel === level[1]) {
+            currentL = level[1];
+        } else {
+            currentL = level[2];
+        }
+    }
 
 function initializeBoard() {
 	/*Inicializar la tabla vacia (6x8)*/
@@ -164,12 +181,17 @@ function comparateInverse ( a, b ){
 
 function finish(){
 	$('#board').remove();
-	
+	updatePoints();
 	html =  '<div class="row">';
 	html += '<div id="finish" class="alert alert-warning col-xs-12">The time has finished.<strong> You got '+success+' success of '+round+' rounds.</strong>';
 	html += ' Well done!</div>';
 	html += '</div>';
 	$('body').append(html);
+}
+
+
+var updatePoints = function(){
+    window.JSInterface.updatePnts(success, 0, "FTS", currentL);
 }
 
 

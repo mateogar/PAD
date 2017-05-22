@@ -21,16 +21,28 @@ public class JavaScriptInterface {
         activity.onBackPressed();
     }*/
     @JavascriptInterface
-    public void updatePnts(int acerts, int fails){
+    public void updatePnts(int acerts, int fails, String gameName, String level){
         // We need an Editor object to make preference changes.
         // All objects are from android.context.Context
         SharedPreferences settings = this.activity.getSharedPreferences("MyPrefFile", 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("points", acerts);
-
+        editor.putInt("points_" + gameName + "_" + level, acerts);
         // Commit the edits!
         editor.commit();
         int p = settings.getInt("points",1000);
         Log.d("MindGames", String.valueOf(p));
     }
+
+    @JavascriptInterface
+    public String loadLevel(){
+        return "LOW";
+    }
+
+    @JavascriptInterface
+    public int getRecord(String nameGame, String level){
+        SharedPreferences settings = this.activity.getSharedPreferences("MyPrefFile", 0);
+        int record = settings.getInt("points_" + nameGame + "_" + level,0);
+        return record;
+    }
+
 }

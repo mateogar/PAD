@@ -12,12 +12,32 @@ var NUM_SEG_COUNT = 5;
 var id;
 var levels = {"EASY": 2, "MEDIUM": 3, "HARD": 4};
 
-var initializeRound = function(level){
-	round = levels[level];
+var levels = ['LOW', 'MEDIUM', 'HIGH'];
+var level;
+
+var initializeRound = function(){
+
 	acertado = false;
 	numPhases++;
 	cont = 0;
 }
+
+function initializeVariables(currentLevel) {
+
+        if (currentLevel === levels[0]) {
+            round = 2;
+            level = levels[0];
+        } else if (currentLevel === levels[1]) {
+            round = 3;
+            level = levels[1];
+
+        } else {
+            round=4;
+            level = levels[2];
+        }
+    }
+
+
 
 var startRound = function(){
 	var image = Math.round(Math.random());
@@ -58,6 +78,7 @@ var pulsado = function(e){
 
 var showStats = function(){
 	document.getElementById("c_main").innerHTML = "<div id='stat_name' class='g-block'><p> UserName</p></div><div id='stat_ok' class='g-block'><p><span class='glyphicon glyphicon-ok col-sm-6'></span> Corrects: "+acerts+"</p></div><div id='stat_wr' class='g-block'><p><span class='glyphicon glyphicon-remove col-sm-6'></span> Wrongs: "+fails+"</p></div>";
+    updatePoints();
 }
 
 //funcion countdown
@@ -91,14 +112,23 @@ function move() {
 
 var playGame = function(){
 	clearInterval(id);
-	initializeRound("HARD");
+	initializeRound();
 	startRound();
 	//llamar funcion countdown
 	move();
 }
 
+var startGame = function(lvl) {
+    initializeVariables(lvl);
+    playGame();
+
+}
+
+var updatePoints = function(){
+    window.JSInterface.updatePnts(acerts, fails, "PG", level);
+}
+
+
 window.onload = function(){
-	playGame();
-	
-	
+	startGame("LOW");
 }

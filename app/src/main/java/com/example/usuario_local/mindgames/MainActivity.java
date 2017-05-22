@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         myWebView.getSettings().setJavaScriptEnabled(true);
         Intent intent = getIntent();
         String message = intent.getStringExtra(FormActivity.EXTRA_MESSAGE);
+        initGame(this.getCurrentFocus());
         myWebView.loadUrl("file:///android_asset/"+message+"/index.html");
         myWebView.setWebViewClient(new MyBrowser());
         JavaScriptInterface jsInterface = new JavaScriptInterface(this);
@@ -42,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
         // Restore preferences
         SharedPreferences settings = getSharedPreferences("MyPrefFile", 0);
         int point = settings.getInt("points", 0);
+
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
@@ -68,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Ejemplo para llamar a javascript desde Android
-    /*public void alertWin(View view){
-        int a = 3;
-        myWebView.loadUrl("javascript:alertW('"+ a +"')");
-    }*/
+    public void initGame(View view){
+        String lvl = "LOW";
+        myWebView.loadUrl("javascript:initLevel('"+ lvl +"')");
+    }
 
     private class MyBrowser extends WebViewClient {
     @Override

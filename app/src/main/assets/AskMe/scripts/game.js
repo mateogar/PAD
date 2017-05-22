@@ -1,7 +1,7 @@
 'use strict';
 
 
-(function() {
+
     //En una partida hay una pregunta de cada categoría
     const categories = {
         0: 'Arte y Literatura',
@@ -19,6 +19,11 @@
     const MAX_OPTS = 4;
     let hits = 0;
     let fails = 0;
+
+    var level = ['LOW', 'MEDIUM', 'HIGH'];
+
+    var currentL;
+
     //Segundos que dura una ronda.
     var MAX_TIME = 10;
     //Segundos que han pasado desde iniciarse el timer.
@@ -30,14 +35,29 @@
     //Cargamos el json
     $.getJSON("scripts/questions.json", function(json) {
         quiz = json;
+
         startGame();
         addListeners();
     });
 
 
     function startGame() {
+        initializeVariables("MEDIUM");
         initializeTemplate();
         createQuestion();
+    }
+
+  function initializeVariables(currentLevel) {
+        if (currentLevel === level[0]) {
+            currentL = level[0];
+
+        } else if (currentLevel === level[1]) {
+
+            currentL = level[1];
+        } else {
+
+            currentL = level[2];
+        }
     }
 
     function initializeTemplate() {
@@ -124,6 +144,7 @@
     function showScore() {
         $('body').append('<h1>Score: ' + hits + '</h1>');
         $('body').append('<h1> Fails: ' + fails + '</h1>');
+        updatePoints();
 
     }
 
@@ -148,6 +169,12 @@
     function updateFails() {
         fails++;
         $('#fails').html(' Fails: ' + fails);
+    }
+
+
+
+    var updatePoints = function(){
+        window.JSInterface.updatePnts(hits, 0, "AM", currentL);
     }
 
     function addListeners() {
@@ -186,4 +213,3 @@
 
 
 
-})();

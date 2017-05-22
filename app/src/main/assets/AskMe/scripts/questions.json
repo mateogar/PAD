@@ -1,13 +1,15 @@
 {
 
-    "Arte y Literatura": [{
+    "Arte y Literatura": [
+
+        {"LOW": [{
 
         "question": "¿Quién pintó el 'Gernika'?",
         "options": [
             "Salvador Dalí",
             "Francisco de Goya",
             "Pablo Picasso",
-            "Van Vogh"
+            "Van Gogh"
         ],
         "answer": "3"
     }, {
@@ -20,6 +22,15 @@
             "Camilo José Cela"
         ],
         "answer": "2"
+    },{
+        "question": "¿Quién escribió 'El arte de la guerra'?",
+        "options": [
+            "Confucio",
+            "Dao de Jing",
+            "Sun Tzu",
+            "Mao Tse-Tung"
+        ],
+        "answer": "3"
     }, {
 
         "question": "¿Dónde está ambientada la obra 'Romeo y Julieta'?",
@@ -40,8 +51,8 @@
             "Federico Garcia Lorca"
         ],
         "answer": "3"
-    }],
-    "Deportes": [{
+    }]}],
+    "Deportes": [{"LOW":[{
 
         "question": "¿Qué equipo de fútbol ha ganado más veces la Copa de Europa?",
         "options": [
@@ -53,6 +64,16 @@
         "answer": "1"
     }, {
 
+        "question": "¿Qué país no cuenta con ningún jugador que haya logrado un Balón de Oro?",
+        "options": [
+            "Hungría",
+            "Serbia",
+            "Dinamarca",
+            "Ucrania"
+        ],
+        "answer": "2"
+    },{
+
         "question": "¿Cuál es el estadio del Alcoyano?",
         "options": [
             "El Colgao",
@@ -61,7 +82,7 @@
             "Mestalla"
         ],
         "answer": "2"
-    }, {
+    },  {
 
         "question": "¿Cuál de los siguientes equipos de fútbol nunca ha bajado de división?",
         "options": [
@@ -81,8 +102,18 @@
             "Del Potro"
         ],
         "answer": "2"
-    }],
+    }]}],
     "Ciencia": [{
+
+        "question": "¿Cuál de las siguientes cosas hizo Edmund Halley?",
+        "options": [
+            "Descubrió el cometa Halley",
+            "Fue miembro de la Royal Society",
+            "Desarrolló la ley de la elasticidad",
+            "Ninguna de las anteriores"
+        ],
+        "answer": "2"
+    },{
 
         "question": "Los años luz son una medida de...",
         "options": [
@@ -123,7 +154,18 @@
         ],
         "answer": "1"
     }],
-    "Historia": [{
+    "Historia": [
+        {
+            "question": "¿Cuántos años duró La Guerra de los 100 años?",
+            "options": [
+                "93",
+                "24",
+                "116",
+                "100"
+            ],
+            "answer": "3"
+        },
+        {
 
         "question": "América se descubrió en el año...",
         "options": [
@@ -166,6 +208,16 @@
     }],
     "Geografía": [{
 
+        "question": "¿Cuál de los siguientes países NO existe?",
+        "options": [
+            "Malawi",
+            "Swazilandia",
+            "Benin",
+            "Toga"
+        ],
+        "answer": "4"
+    },{
+
         "question": "La capital de Mongolia es",
         "options": [
             "Ulán Bator",
@@ -205,8 +257,8 @@
         ],
         "answer": "2"
     }],
-    "Cine y Cultura": [{
-
+    "Cine y Cultura": [
+        {
         "question": "¿Cuál de las siguientes películas recibió 11 premios oscar?",
         "options": [
             "El señor de los anillos",
