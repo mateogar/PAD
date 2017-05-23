@@ -34,6 +34,17 @@ public class JavaScriptInterface {
     }
 
     @JavascriptInterface
+    public void share(int success,  String gameName, String level){
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        String message = "Hey!\nI play " + gameName + " in the ";
+        message += level +" level and I get a score of " + success;
+        sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+        sendIntent.setType("text/plain");
+        this.activity.startActivity(Intent.createChooser(sendIntent, "Share with"));
+    }
+
+    @JavascriptInterface
     public String loadLevel(){
         return "LOW";
     }
