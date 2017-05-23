@@ -187,8 +187,15 @@ function finish(){
 	html += ' Well done!</div>';
 	html += '</div>';
 	$('body').append(html);
+	html =  '<div class="row">';
+    html += '<button id="share" class="btn-primary btn-md" onclick="share()">Share your score!</button>';
+    html += '</div>';
+    $('body').append(html);
 }
 
+var share = function(){
+    window.JSInterface.share(success, "FTS", currentL);
+}
 
 var updatePoints = function(){
     window.JSInterface.updatePnts(success, 0, "FTS", currentL);
