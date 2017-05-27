@@ -1,4 +1,4 @@
-var NUM_SEG_COUNT =	5;
+var NUM_SEG_COUNT =	45*10;//ds
 var MAX_FILAS = 6;
 var MAX_COLUM = 6
 var MIN_VALUE = -9;
@@ -26,23 +26,39 @@ $(document).ready(function() {
 	html += '</div>';
 	$('body').append(html);
     initializeVariables("MEDIUM");
-	move();
-	initializeBoard();
+	showRules();
+	//move();
+	//initializeBoard();
+	
 });
 
 
- function initializeVariables(currentLevel) {
-        if (currentLevel === level[0]) {
-            currentL = level[0];
-        } else if (currentLevel === level[1]) {
-            currentL = level[1];
-        } else {
-            currentL = level[2];
-        }
-    }
+function initializeVariables(currentLevel) {
+	if (currentLevel === level[0]) {
+		currentL = level[0];
+	} else if (currentLevel === level[1]) {
+		currentL = level[1];
+	} else {
+		currentL = level[2];
+	}
+}
+
+function showRules(){
+	html =  '<div class="row rules">';
+	html += '<div id="info-rules" class="alert alert-warning col-xs-12">In this game you must to push the circles in order';
+	html += 'if the color of the button is blue the order is upward and if the button is red the order is falling';
+	html += '</div><button id="rules-btn" class="btn-block btn-primary" onclick="initGame()">Start!</button>';
+	html += '</div>';
+	$('body').append(html);
+}
+
+function initGame(){
+	$('.rules').remove();
+	move();
+	initializeBoard();
+}
 
 function initializeBoard() {
-	/*Inicializar la tabla vacia (6x8)*/
 	var html = '';
 	var num = 1;
 	for (i=0;i<MAX_FILAS;i++) {
@@ -57,8 +73,7 @@ function initializeBoard() {
 	$('#rounds').append('<span> '+round+'</span>');
 	$('#success').append('<span> '+success+'</span>');
 	$('body').append('<div id="board"></div>');
-	$("#board").append(html);
-	
+	$("#board").append(html);	
 	
 	initializeRound();
 }
@@ -119,19 +134,20 @@ function move() {
 	var elem = document.getElementById("myBar");
 	elem.style.width = '100%';	
 	var count = NUM_SEG_COUNT;
-	id = setInterval(frame, 1000);
+	id = setInterval(frame, 100);
 	
 	function frame(){
 		
 		width = (100/NUM_SEG_COUNT)*count;
 		elem.style.width = width + '%'; 
+		//console.log(width);
 		
-		if (count == 15) {
+		if (count == 150) {
 			$('#myBar').removeClass('progress-bar-success');
 			$('#myBar').addClass('progress-bar-warning');
 		}
 		
-		if (count == 5) {
+		if (count == 50) {
 			$('#myBar').removeClass('progress-bar-warning');
 			$('#myBar').addClass('progress-bar-danger');
 		}
@@ -188,7 +204,7 @@ function finish(){
 	html += '</div>';
 	$('body').append(html);
 	html =  '<div class="row">';
-    html += '<button id="share" class="btn-primary btn-md" onclick="share()">Share your score!</button>';
+    html += '<button id="share" class="btn-block btn-primary" onclick="share()">Share your score!</button>';
     html += '</div>';
     $('body').append(html);
 }

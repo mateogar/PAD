@@ -13,12 +13,12 @@ body{
 }
 
 #myBar {
-    width: 20px;
+    width: 100%;
     height: 10px;
     /*background-color: rgb(201, 22, 206);*/
 }
 
-#rounds , #success , #finish , #myProgress{
+#rounds , #success , #finish , #myProgress, #info-rules{
 	text-align: center;
 }
 
@@ -42,7 +42,7 @@ body{
 
 .cell{
 	/*width: 150px;*/
-     height: 30px;
+    height: 30px;
 }
 
 .imgBtn{
@@ -52,4 +52,9 @@ body{
 .imgBtn:active{
 	height: 40px;
 	transform: translate(1px, 1px);
+}
+
+#rules-btn, #share{
+	border-radius: 15px;
+	border: 2px solid;
 }
