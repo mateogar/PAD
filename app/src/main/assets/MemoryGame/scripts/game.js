@@ -12,9 +12,9 @@
     var totalHits = 0;
     //Segundos que han pasado desde iniciarse el timer.
     var timeBar = 0;
-
+    var rounds = 0;
     //Segundos que dura una ronda.
-    var MAX_TIME = 15;
+    var NUM_SEG_COUNT = 30 * 10; //ds
     //Objetivos que le faltan por pulsar esta ronda
     var targetsLeft;
 
@@ -36,89 +36,174 @@
     //Fallos máximos en una ronda
     var MAX_FAILS_ROUND = 3;
 
-//al cargar la pantalla se llama a la funci?n principal del juego
-window.onload = function(){
-    initLevel();
-    startGame();
-}
-
-    function initLevel(){
-        generalLevel = window.JSInterface.loadLevel();
+    //al cargar la pantalla se llama a la funci?n principal del juego
+    window.onload = function() {
+        initLevel();
+        startGame();
     }
 
+    function initLevel() {
+
+
+
+        generalLevel = window.JSInterface.loadLevel();
+        // generalLevel = "MEDIUM";
+
+    }
 
     function startGame() {
         let currentLevel = generalLevel;
+        // initializeTemplate();
+
+        let levelURL = document.URL.split("?")[1];
+        let levelEnd = levelURL.split("=");
+        if (levelEnd[0] == "level") {
+            levelEnd = levelEnd[1];
+        }
+        initializeVariables(levelEnd);
         initializeTemplate();
-        initializeVariables(currentLevel);
-        countdown();
-        initializeRound();
+        // initializeVariables(generalLevel);
+        showRules();
+        // move();
+        // initializeRound();
 
     }
 
-    function initializeVariables(currentLevel) {
-        if (currentLevel === level[0]) {
-        currentL = level[0];
-            hiddenBoxes = 38;
-            targets = 2;
-            MAX_FAILS_ROUND = 3;
-        } else if (currentLevel === level[1]) {
-            hiddenBoxes = 35;
-            targets = 3;
-            MAX_FAILS_ROUND = 3;
-            currentL = level[1];
-        } else {
-            hiddenBoxes = 33;
-            targets = 4;
-            MAX_FAILS_ROUND = 2;
-            currentL = level[2];
+    function initializeTemplate() {
+        // $('body').append('<div id="c_time" class="cab-block"></div>');
+        // $('body #c_time').append('<div id="myProgress"></div>');
+        // $('body #c_time #myProgress').append('<div id="myBar"></div>');
+        // $('body').append('<h3 id="totalHits">Hits: 0 </h3>');
+        // html = '<div class="row">';
+        let html = '';
+        html = '<div class="row">';
+        html += '<div id="rounds" class=" header-alert alert alert-info col-xs-4"><strong>Round:</strong> </div>';
+        html += '<div id="targetCounter" class="header-alert alert alert-success col-xs-4"><strong>Left In Round:</strong> </div>';
+        html += '<div id="success" class="header-alert alert alert-success col-xs-4"><strong>Hits:</strong></div>';
+        html += '</div>';
+        $('body').append(html);
+
+
+    }
+
+    function showRules() {
+        let html = '';
+        html = '<div class="row rules">';
+        html += '<div id="info-rules" class="alert alert-warning col-xs-12">';
+        html += '<h3>Remember the cells whose color change to <span class="red">RED</span>.Then search and click them as fast as you can</h3>';
+        html += '</div><button id="rules-btn" class="btn-block btn-primary" onclick="initGame()">Start!</button>';
+        html += '</div>';
+        $('body').append(html);
+    }
+
+    /*
+        Se llama a este método cuando acierta un target.
+         */
+    function updateTargetCounter() {
+
+        targetsLeft--;
+        totalHits++;
+        $('#targetCounter').html('Left In Round: ' + targetsLeft);
+        $('#success').html('Hits: ' + totalHits);
+        if (targetsLeft === 0) {
+            nextRound();
+
+
+
         }
     }
 
-    //funcion countdown
-    function countdown() {
-        //inicializaci?n del countdown
-        var width = 0;
+    /*
+    Se llama a este método cuando pulsa a un box que no es target.
+     */
+    function updateFailsCounter() {
+        failsInRound++;
+        $('#failCounter').html('Fails in round: ' + failsInRound);
+        //Si falla MAX_FAILS_ROUND se cambia el tablero
+        if (failsInRound >= MAX_FAILS_ROUND) {
+            nextRound();
+        }
+
+    }
+
+    function updateRoundCounter() {
+        rounds++;
+        $('#rounds').html('Round: ' + rounds);
+        $('#targetCounter').html('Left In Round: ' + targets);
+    }
+
+
+
+    function initGame() {
+        $('.rules').remove();
+        move();
+        initializeRound();
+    }
+
+
+    //funcion move
+    function move() {
         var elem = document.getElementById("myBar");
-        var idInter;
-        elem.style.width = '0%';
-        idInter = setInterval(function() {
-            width = timeBar * (100 / MAX_TIME);
+        elem.style.width = '100%';
+        var count = NUM_SEG_COUNT;
+        let id = setInterval(frame, 100);
+
+        function frame() {
+
+            let width = (100 / NUM_SEG_COUNT) * count;
             elem.style.width = width + '%';
 
-            //Si se acaba el countdown se termina el juego.
-            if (timeBar >= MAX_TIME) {
-                //se limpia el Interval
-                clearInterval(idInter);
-                deleteAll();
-                showScore();
 
-
-            } else {
-                timeBar++;
+            if (count < (NUM_SEG_COUNT / 2) && count > (NUM_SEG_COUNT / 3)) {
+                $('#myBar').removeClass('progress-bar-success');
+                $('#myBar').addClass('progress-bar-warning');
+            } else if (count < (NUM_SEG_COUNT / 3)) {
+                $('#myBar').removeClass('progress-bar-warning');
+                $('#myBar').addClass('progress-bar-danger');
             }
-
-        }, 1000);
+            if (count <= 0) {
+                elem.style.width = '0%';
+                clearInterval(id);
+                finish();
+                //updateFails();
+                //nextQuestion();
+            }
+            count--;
+        }
     }
 
-    function deleteAll() {
-        deleteBoard();
-        deleteStuff();
+    function finish() {
+        $('#board').remove();
+
+        var recPoints = getRecord();
+        if (totalHits > recPoints)
+            updatePoints();
+
+
+
+
+
+        let html = '<div class="row">';
+        html += '<div id="finish" class="alert alert-warning col-xs-12">The time has finished.<strong> You got ' + totalHits + ' hits</strong>';
+        html += ' Well done!</div>';
+        html += '</div>';
+        $('body').append(html);
+        html = '<div class="row">';
+        html += '<button id="share" class="btn-block btn-primary" onclick="share()">Share your score!</button>';
+        html += '</div>';
+        $('body').append(html);
 
     }
 
 
-    function initializeTemplate() {
-        $('body').append('<div id="c_time" class="cab-block"></div>');
-        $('body #c_time').append('<div id="myProgress"></div>');
-        $('body #c_time #myProgress').append('<div id="myBar"></div>');
-        $('body').append('<h3 id="totalHits">Hits: 0 </h3>');
-        $('body').append('<section> </section>');
 
-    }
+
+
+
 
     function initializeRound() {
         targetsLeft = targets;
+        updateRoundCounter();
         failsInRound = 0;
         clickTime = false;
         targetBoxes = [];
@@ -149,16 +234,16 @@ window.onload = function(){
     }
 
     function deleteBoard() {
-        $('#board').remove();
-        $('#targetCounter').remove();
-        $('#failCounter').remove();
+        $('#board-div').remove();
+
     }
 
     function initializeBoard() {
-
-        $('body section').append('<table id="board" class="table table-hover"></table>');
-        $('body').append('<h3 class="counter" id="targetCounter">Left:' + targetsLeft + ' </h3>');
-        $('body').append('<h3 class="counter" id="failCounter">Fails in round:' + failsInRound + ' </h3>');
+        $('body').append('<div id="board-div" class="row"> </div>');
+        $('#board-div').append('<section class="col-xs-12"> </section>');
+        $('#board-div section').append('<table id="board" class="table table-hover"></table>');
+        //$('body').append('<h3 class="counter" id="targetCounter">Left:' + targetsLeft + ' </h3>');
+        //$('body').append('<h3 class="counter" id="failCounter">Fails in round:' + failsInRound + ' </h3>');
         $("#board").append(html);
 
         /*Este timeout genera la transición para que las cajas aparezcan despacio*/
@@ -171,44 +256,14 @@ window.onload = function(){
 
     }
 
-    /*
-    Se llama a este método cuando acierta un target.
-     */
-    function updateTargetCounter() {
-        targetsLeft--;
-        totalHits++;
-        $('#targetCounter').html('Left: ' + targetsLeft);
-        $('#totalHits').html('Hits: ' + totalHits);
-        if (targetsLeft === 0) {
-            nextRound();
 
 
-
-        }
-    }
-
-    /*
-    Se llama a este método cuando pulsa a un box que no es target.
-     */
-    function updateFailsCounter() {
-        failsInRound++;
-        $('#failCounter').html('Fails in round: ' + failsInRound);
-        //Si falla MAX_FAILS_ROUND se cambia el tablero
-        if (failsInRound >= MAX_FAILS_ROUND) {
-            nextRound();
-        }
-
-    }
-
-    function deleteStuff() {
-        $('body #c_time').remove();
-        $('body #totalHits').remove();
-    }
 
 
     function nextRound() {
         /*Se inicia la siguiente ronda con unos segundos de delay*/
         var timeout = setTimeout(function() {
+
             //Tras cada ronda se aumenta el número de boxes visibles
             if (hiddenBoxes > 0)
                 hiddenBoxes--;
@@ -295,13 +350,6 @@ window.onload = function(){
 
     }
 
-    function showScore() {
-        $('body').append('<h1>Score: ' + totalHits + '</h1>');
-        var recPoints = getRecord();
-        if(totalHits > recPoints){
-            updatePoints();
-        }
-    }
 
 
 
@@ -318,14 +366,7 @@ window.onload = function(){
 
 
 
-var updatePoints = function(){
-    window.JSInterface.updatePnts(totalHits, 0, "MG", currentL);
-}
 
-
-var getRecord = function(){
-   return  window.JSInterface.getRecord("MG", currentL);
-}
 
     function addListeners() {
         /*Ahora se añade el listener a los clicks del jugador sobre las cajas*/
@@ -355,4 +396,35 @@ var getRecord = function(){
             }
 
         });
+    }
+
+    function initializeVariables(currentLevel) {
+        if (currentLevel === level[0]) {
+            currentL = level[0];
+            hiddenBoxes = 38;
+            targets = 2;
+            MAX_FAILS_ROUND = 3;
+        } else if (currentLevel === level[1]) {
+            hiddenBoxes = 35;
+            targets = 3;
+            MAX_FAILS_ROUND = 3;
+            currentL = level[1];
+        } else {
+            hiddenBoxes = 33;
+            targets = 4;
+            MAX_FAILS_ROUND = 2;
+            currentL = level[2];
+        }
+    }
+
+    var share = function() {
+        window.JSInterface.share(totalHits, "MG", currentL);
+    }
+
+    var updatePoints = function() {
+        window.JSInterface.updatePnts(totalHits, 0, "MG", currentL);
+    }
+
+    var getRecord = function() {
+        return window.JSInterface.getRecord("MG", currentL);
     }

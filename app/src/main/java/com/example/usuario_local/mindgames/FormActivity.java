@@ -1,6 +1,8 @@
 package com.example.usuario_local.mindgames;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,9 @@ import java.io.OutputStreamWriter;
 public class FormActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "com.example.usuario_local.mindgames.MESSAGE";
 
+    private String message;
+    private Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +33,7 @@ public class FormActivity extends AppCompatActivity {
     }
 
     public void changeGame(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        String message = "";
+        intent = new Intent(this, MainActivity.class);
 
         if (view.getId() == R.id.buttonCualEsMayor) {
             message = "CualEsMayor";
@@ -51,8 +55,34 @@ public class FormActivity extends AppCompatActivity {
             }
         }
 
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(view.getContext());
+
+        // set title
+        alertDialogBuilder.setTitle("LEVEL")
+                .setItems(R.array.levels, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // The 'which' argument contains the index position
+                        // of the selected item
+                        String level = "LOW";
+                        switch(which){
+                            case 0: level = "LOW"; break;
+                            case 1: level = "MEDIUM"; break;
+                            case 2: level = "HIGH"; break;
+                            default: level = "LOW"; break;
+                        }
+                        message = message + "_" + level;
+                        intent.putExtra(EXTRA_MESSAGE, message);
+                        startActivity(intent);
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+
+
     }
 
     //Método ejemplo para leer el archivo de preguntas

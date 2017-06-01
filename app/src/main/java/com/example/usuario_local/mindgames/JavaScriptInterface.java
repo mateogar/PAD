@@ -16,10 +16,10 @@ public class JavaScriptInterface {
         this.activity = activiy;
     }
 
-   /* @JavascriptInterface
-    public void goBack(){
-        activity.onBackPressed();
-    }*/
+    /* @JavascriptInterface
+     public void goBack(){
+         activity.onBackPressed();
+     }*/
     @JavascriptInterface
     public void updatePnts(int acerts, int fails, String gameName, String level){
         // We need an Editor object to make preference changes.
@@ -37,8 +37,8 @@ public class JavaScriptInterface {
     public void share(int success,  String gameName, String level){
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        String message = "Hey!\nI play " + gameName + " in the ";
-        message += level +" level and I get a score of " + success;
+        String message = "Hey!\nI just played MindGames.\nI got a score of " + success + " in the game " + gameName + " on its ";
+        message += level +" level.";
         sendIntent.putExtra(Intent.EXTRA_TEXT, message);
         sendIntent.setType("text/plain");
         this.activity.startActivity(Intent.createChooser(sendIntent, "Share with"));

@@ -1,60 +1,23 @@
-body{
-	background: darkgrey;
+#board {
+    margin: 2% auto;
 }
 
-/*Contador*/
-#myProgress {
-    background-color: white;
-}
-
-#rounds , #success{
-    margin-bottom : 0px;
-    padding: 2px 0px;
-}
-
-#myBar {
+.round-button img {
+    height: 20px;
     width: 100%;
-    height: 10px;
-    /*background-color: rgb(201, 22, 206);*/
 }
 
-#rounds , #success , #finish , #myProgress, #info-rules{
-	text-align: center;
-}
-
-#board{
-	margin:2% auto;
-}
-
-.round-button img{
-	height: 20px;
-	width: 100%;
-}
-
-.round-button{
-    /*background-image: url( '../img/bluecircle.png' );
-    background-size: 20px 29px;
-	background-repeat: no-repeat;
-	height: 29px;
-	font-size: 15px;	
-	color: yellow;*/
-}
-
-.cell{
-	/*width: 150px;*/
+.cell {
+    /*width: 150px;*/
     height: 30px;
 }
 
-.imgBtn{
-	height: 30px;
+.imgBtn {
+    height: 30px;
+    transition: transform 0.2s;
 }
 
-.imgBtn:active{
-	height: 40px;
-	transform: translate(1px, 1px);
-}
-
-#rules-btn, #share{
-	border-radius: 15px;
-	border: 2px solid;
+.imgBtn:active {
+    /*height: 53px;*/
+    transform: scale(1.2);
 }

@@ -2,160 +2,169 @@
 
     "Arte y Literatura": [
 
-        {"LOW": [{
+        {
+            "LOW": [{
 
-        "question": "¿Quién pintó el 'Gernika'?",
-        "options": [
-            "Salvador Dalí",
-            "Francisco de Goya",
-            "Pablo Picasso",
-            "Van Gogh"
-        ],
-        "answer": "3"
-    }, {
+                "question": "¿Quién pintó el 'Gernika'?",
+                "options": [
+                    "Salvador Dalí",
+                    "Francisco de Goya",
+                    "Pablo Picasso",
+                    "Van Gogh"
+                ],
+                "answer": "3"
+            }, {
 
-        "question": "¿Quién escribió 'Don Quijote de la Mancha'?",
-        "options": [
-            "Lope de Vega",
-            "Miguel de Cervantes",
-            "Francisco de Quevedo",
-            "Camilo José Cela"
-        ],
-        "answer": "2"
-    },{
-        "question": "¿Quién escribió 'El arte de la guerra'?",
-        "options": [
-            "Confucio",
-            "Dao de Jing",
-            "Sun Tzu",
-            "Mao Tse-Tung"
-        ],
-        "answer": "3"
-    }, {
+                "question": "¿Quién escribió 'Don Quijote de la Mancha'?",
+                "options": [
+                    "Lope de Vega",
+                    "Miguel de Cervantes",
+                    "Francisco de Quevedo",
+                    "Camilo José Cela"
+                ],
+                "answer": "2"
+            }, {
+                "question": "¿Quién escribió 'El arte de la guerra'?",
+                "options": [
+                    "Confucio",
+                    "Dao de Jing",
+                    "Sun Tzu",
+                    "Mao Tse-Tung"
+                ],
+                "answer": "3"
+            }, {
 
-        "question": "¿Dónde está ambientada la obra 'Romeo y Julieta'?",
-        "options": [
-            "Verona",
-            "Londres",
-            "Talavera de la Reina",
-            "Venecia"
-        ],
-        "answer": "1"
-    }, {
+                "question": "¿Dónde está ambientada la obra 'Romeo y Julieta'?",
+                "options": [
+                    "Verona",
+                    "Londres",
+                    "Talavera de la Reina",
+                    "Venecia"
+                ],
+                "answer": "1"
+            }, {
 
-        "question": "¿De quién es el best-seller 'Cometas en el cielo'?",
-        "options": [
-            "Yu Dan",
-            "Elie Wiesel",
-            "Khaled Hoesseini",
-            "Federico Garcia Lorca"
-        ],
-        "answer": "3"
-    }]}],
-    "Deportes": [{"LOW":[{
+                "question": "¿De quién es el best-seller 'Cometas en el cielo'?",
+                "options": [
+                    "Yu Dan",
+                    "Elie Wiesel",
+                    "Khaled Hoesseini",
+                    "Federico Garcia Lorca"
+                ],
+                "answer": "3"
+            }]
+        }
+    ],
+    "Deportes": [{
+        "LOW": [{
 
-        "question": "¿Qué equipo de fútbol ha ganado más veces la Copa de Europa?",
-        "options": [
-            "Real Madrid C.F.",
-            "F.C. Barcelona",
-            "Bayern de Múnich",
-            "A. C. Milan"
-        ],
-        "answer": "1"
-    }, {
+            "question": "¿Qué equipo de fútbol ha ganado más veces la Copa de Europa?",
+            "options": [
+                "Real Madrid C.F.",
+                "F.C. Barcelona",
+                "Bayern de Múnich",
+                "A. C. Milan"
+            ],
+            "answer": "1"
+        }, {
 
-        "question": "¿Qué país no cuenta con ningún jugador que haya logrado un Balón de Oro?",
-        "options": [
-            "Hungría",
-            "Serbia",
-            "Dinamarca",
-            "Ucrania"
-        ],
-        "answer": "2"
-    },{
+            "question": "¿Qué país no cuenta con ningún jugador que haya logrado un Balón de Oro?",
+            "options": [
+                "Hungría",
+                "Serbia",
+                "Dinamarca",
+                "Ucrania"
+            ],
+            "answer": "2"
+        }, {
 
-        "question": "¿Cuál es el estadio del Alcoyano?",
-        "options": [
-            "El Colgao",
-            "El Collao",
-            "El Sardinero",
-            "Mestalla"
-        ],
-        "answer": "2"
-    },  {
+            "question": "¿Cuál es el estadio del Alcoyano?",
+            "options": [
+                "El Colgao",
+                "El Collao",
+                "El Sardinero",
+                "Mestalla"
+            ],
+            "answer": "2"
+        }, {
 
-        "question": "¿Cuál de los siguientes equipos de fútbol nunca ha bajado de división?",
-        "options": [
-            "Valencia C.F.",
-            "Deportivo de la Coruña",
-            "Sevilla C.F.",
-            "Athletic Club de Bilbao"
-        ],
-        "answer": "4"
-    }, {
+            "question": "¿Cuál de los siguientes equipos de fútbol nunca ha bajado de división?",
+            "options": [
+                "Valencia C.F.",
+                "Deportivo de la Coruña",
+                "Sevilla C.F.",
+                "Athletic Club de Bilbao"
+            ],
+            "answer": "4"
+        }, {
 
-        "question": "¿Qué jugador de tenis ha ganado más veces Roland Garros?",
-        "options": [
-            "Roger Federer",
-            "Rafael Nadal",
-            "Novak Djokovic",
-            "Del Potro"
-        ],
-        "answer": "2"
-    }]}],
+            "question": "¿Qué jugador de tenis ha ganado más veces Roland Garros?",
+            "options": [
+                "Roger Federer",
+                "Rafael Nadal",
+                "Novak Djokovic",
+                "Del Potro"
+            ],
+            "answer": "2"
+        }]
+    }],
     "Ciencia": [{
 
-        "question": "¿Cuál de las siguientes cosas hizo Edmund Halley?",
-        "options": [
-            "Descubrió el cometa Halley",
-            "Fue miembro de la Royal Society",
-            "Desarrolló la ley de la elasticidad",
-            "Ninguna de las anteriores"
-        ],
-        "answer": "2"
-    },{
+        "LOW": [{
 
-        "question": "Los años luz son una medida de...",
-        "options": [
-            "Tiempo",
-            "Distancia",
-            "Energía",
-            "Ninguna de las anteriores"
-        ],
-        "answer": "2"
-    }, {
+            "question": "¿Cuál de las siguientes cosas hizo Edmund Halley?",
+            "options": [
+                "Descubrió el cometa Halley",
+                "Fue miembro de la Royal Society",
+                "Desarrolló la ley de la elasticidad",
+                "Ninguna de las anteriores"
+            ],
+            "answer": "2"
+        }, {
 
-        "question": "¿Cuál es el satélite más grande de Marte?",
-        "options": [
-            "Vita",
-            "Deimos",
-            "Salo",
-            "Fobos"
-        ],
-        "answer": "4"
-    }, {
+            "question": "Los años luz son una medida de...",
+            "options": [
+                "Tiempo",
+                "Distancia",
+                "Energía",
+                "Ninguna de las anteriores"
+            ],
+            "answer": "2"
+        }, {
 
-        "question": "¿En qué país nació Linus Torvald?",
-        "options": [
-            "EEUU",
-            "Canada",
-            "Finlandia",
-            "Dinamarca"
-        ],
-        "answer": "3"
-    }, {
+            "question": "¿Cuál es el satélite más grande de Marte?",
+            "options": [
+                "Vita",
+                "Deimos",
+                "Salo",
+                "Fobos"
+            ],
+            "answer": "4"
+        }, {
 
-        "question": "Charles Darwin escribió...",
-        "options": [
-            "El origen de las especies",
-            "Homero y la Iliada",
-            "El señor de los anillos",
-            "Principios matemáticos de la filosofía"
-        ],
-        "answer": "1"
+            "question": "¿En qué país nació Linus Torvald?",
+            "options": [
+                "EEUU",
+                "Canada",
+                "Finlandia",
+                "Dinamarca"
+            ],
+            "answer": "3"
+        }, {
+
+            "question": "Charles Darwin escribió...",
+            "options": [
+                "El origen de las especies",
+                "Homero y la Iliada",
+                "El señor de los anillos",
+                "Principios matemáticos de la filosofía"
+            ],
+            "answer": "1"
+        }]
     }],
-    "Historia": [
-        {
+    "Historia": [{
+
+        "LOW": [{
             "question": "¿Cuántos años duró La Guerra de los 100 años?",
             "options": [
                 "93",
@@ -164,139 +173,141 @@
                 "100"
             ],
             "answer": "3"
-        },
-        {
+        }, {
 
-        "question": "América se descubrió en el año...",
-        "options": [
-            "1486",
-            "1502",
-            "1492",
-            "476"
-        ],
-        "answer": "3"
-    }, {
+            "question": "América se descubrió en el año...",
+            "options": [
+                "1486",
+                "1502",
+                "1492",
+                "476"
+            ],
+            "answer": "3"
+        }, {
 
-        "question": "¿Cómo se denominaba a la gente de Navarra en el imperio Romano?",
-        "options": [
-            "Vascones",
-            "Navarrus",
-            "Berones",
-            "Navasos"
-        ],
-        "answer": "1"
-    }, {
+            "question": "¿Cómo se denominaba a la gente de Navarra en el imperio Romano?",
+            "options": [
+                "Vascones",
+                "Navarrus",
+                "Berones",
+                "Navasos"
+            ],
+            "answer": "1"
+        }, {
 
-        "question": "La Gran Guerra transcurrió entre los años",
-        "options": [
-            "1914 - 1918",
-            "1936 - 1939",
-            "1939 - 1945",
-            "717 - 895"
-        ],
-        "answer": "1"
-    }, {
+            "question": "La Gran Guerra transcurrió entre los años",
+            "options": [
+                "1914 - 1918",
+                "1936 - 1939",
+                "1939 - 1945",
+                "717 - 895"
+            ],
+            "answer": "1"
+        }, {
 
-        "question": "Felipe V fue rey de España tras...",
-        "options": [
-            "Carlos II",
-            "Luis I",
-            "Felipe IV",
-            "Fernando el Católico"
-        ],
-        "answer": "2"
+            "question": "Felipe V fue rey de España tras...",
+            "options": [
+                "Carlos II",
+                "Luis I",
+                "Felipe IV",
+                "Fernando el Católico"
+            ],
+            "answer": "2"
+        }]
     }],
     "Geografía": [{
+        "LOW": [{
+            "question": "¿Cuál de los siguientes países NO existe?",
+            "options": [
+                "Malawi",
+                "Swazilandia",
+                "Benin",
+                "Toga"
+            ],
+            "answer": "4"
+        }, {
 
-        "question": "¿Cuál de los siguientes países NO existe?",
-        "options": [
-            "Malawi",
-            "Swazilandia",
-            "Benin",
-            "Toga"
-        ],
-        "answer": "4"
-    },{
+            "question": "La capital de Mongolia es",
+            "options": [
+                "Ulán Bator",
+                "Batán",
+                "Kasinski",
+                "Bangkok"
+            ],
+            "answer": "1"
+        }, {
 
-        "question": "La capital de Mongolia es",
-        "options": [
-            "Ulán Bator",
-            "Batán",
-            "Kasinski",
-            "Bangkok"
-        ],
-        "answer": "1"
-    }, {
+            "question": "¿Qué océano se encuentra en la costa este de los Estados Unidos?",
+            "options": [
+                "Índico",
+                "Atlántico",
+                "pacífico",
+                "Cantábrico"
+            ],
+            "answer": "2"
+        }, {
 
-        "question": "¿Qué océano se encuentra en la costa este de los Estados Unidos?",
-        "options": [
-            "Índico",
-            "Atlántico",
-            "pacífico",
-            "Cantábrico"
-        ],
-        "answer": "2"
-    }, {
+            "question": "¿Cuál es la montaña más alta del mundo?",
+            "options": [
+                "K2",
+                "Teide",
+                "Everest",
+                "Kilimanjaro"
+            ],
+            "answer": "3"
+        }, {
 
-        "question": "¿Cuál es la montaña más alta del mundo?",
-        "options": [
-            "K2",
-            "Teide",
-            "Everest",
-            "Kilimanjaro"
-        ],
-        "answer": "3"
-    }, {
-
-        "question": "¿Cuál es la ciudad más poblada del mundo?",
-        "options": [
-            "Delhi",
-            "Tokio",
-            "Pekín",
-            "Albacete"
-        ],
-        "answer": "2"
+            "question": "¿Cuál es la ciudad más poblada del mundo?",
+            "options": [
+                "Delhi",
+                "Tokio",
+                "Pekín",
+                "Albacete"
+            ],
+            "answer": "2"
+        }]
     }],
-    "Cine y Cultura": [
-        {
-        "question": "¿Cuál de las siguientes películas recibió 11 premios oscar?",
-        "options": [
-            "El señor de los anillos",
-            "Mar adentro",
-            "Origen",
-            "Harry Potter"
-        ],
-        "answer": "1"
-    }, {
+    "Cine y Cultura": [{
+        "LOW": [{
+            "question": "¿Cuál de las siguientes películas recibió 11 premios oscar?",
+            "options": [
+                "El señor de los anillos",
+                "Mar adentro",
+                "Origen",
+                "Harry Potter"
+            ],
+            "answer": "1"
+        }, {
 
-        "question": "¿Cuál es la videoconsola más vendida de la historia?",
-        "options": [
-            "Playstation 1",
-            "Xbox 360",
-            "Super Nintendo 64",
-            "PlayStation 2"
-        ],
-        "answer": "4"
-    }, {
+            "question": "¿Cuál es la videoconsola más vendida de la historia?",
+            "options": [
+                "Playstation 1",
+                "Xbox 360",
+                "Super Nintendo 64",
+                "PlayStation 2"
+            ],
+            "answer": "4"
+        }, {
 
-        "question": "¿Cómo se llama la única película de Charles Chaplin en color?",
-        "options": [
-            "Candilejas",
-            "Una mujer en París",
-            "La condesa de Hong Kong",
-            "Un rey en Nueva York"
-        ],
-        "answer": "3"
-    }, {
+            "question": "¿Cómo se llama la única película de Charles Chaplin en color?",
+            "options": [
+                "Candilejas",
+                "Una mujer en París",
+                "La condesa de Hong Kong",
+                "Un rey en Nueva York"
+            ],
+            "answer": "3"
+        }, {
 
-        "question": "¿Cómo se llama la isla en la que vive King Kong?",
-        "options": [
-            "Isla Negra",
-            "Isla Prohibida",
-            "Isla Calavera",
-            "Isla de Fuego"
-        ],
-        "answer": "3"
+            "question": "¿Cómo se llama la isla en la que vive King Kong?",
+            "options": [
+                "Isla Negra",
+                "Isla Prohibida",
+                "Isla Calavera",
+                "Isla de Fuego"
+            ],
+            "answer": "3"
+        }]
     }]
 
 }

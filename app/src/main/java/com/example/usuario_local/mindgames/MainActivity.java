@@ -1,23 +1,16 @@
 package com.example.usuario_local.mindgames;
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.net.Uri;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private WebView myWebView;
@@ -30,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         myWebView.getSettings().setJavaScriptEnabled(true);
         Intent intent = getIntent();
         String message = intent.getStringExtra(FormActivity.EXTRA_MESSAGE);
-        initGame(this.getCurrentFocus());
-        myWebView.loadUrl("file:///android_asset/"+message+"/index.html");
+        String[] data =  message.split("_");
+        myWebView.loadUrl("file:///android_asset/"+data[0]+"/index.html?level="+data[1]);
         myWebView.setWebViewClient(new MyBrowser());
         JavaScriptInterface jsInterface = new JavaScriptInterface(this);
         myWebView.getSettings().setJavaScriptEnabled(true);
@@ -43,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
         // Restore preferences
         SharedPreferences settings = getSharedPreferences("MyPrefFile", 0);
         int point = settings.getInt("points", 0);
-
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
@@ -69,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Ejemplo para llamar a javascript desde Android
-    public void initGame(View view){
-        String lvl = "LOW";
-        myWebView.loadUrl("javascript:initLevel('"+ lvl +"')");
-    }
+    /*public void alertWin(View view){
+        int a = 3;
+        myWebView.loadUrl("javascript:alertW('"+ a +"')");
+    }*/
 
     private class MyBrowser extends WebViewClient {
     @Override
