@@ -37,7 +37,29 @@ public class JavaScriptInterface {
     public void share(int success,  String gameName, String level){
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        String message = "Hey!\nI just played MindGames.\nI got a score of " + success + " in the game " + gameName + " on its ";
+        String game = "";
+        if(gameName.equals("AM")){
+            game = "AskMe";
+        }else{
+            if(gameName.equals("WIG")){
+                game = "Which is Greater?";
+            }else{
+                if(gameName.equals("MG")){
+                    game = "Memory Game";
+                }else{
+                    if(gameName.equals("PG")){
+                        game = "Perception Game";
+                    }else{
+                        if(gameName.equals("FTS")){
+                            game = "Follow the Sequence";
+                        }else{
+                            game = "Game";
+                        }
+                    }
+                }
+            }
+        }
+        String message = "Hey!\nI just played MindGames.\nI got a score of " + success + " in the game " + game + " on its ";
         message += level +" level.";
         sendIntent.putExtra(Intent.EXTRA_TEXT, message);
         sendIntent.setType("text/plain");
