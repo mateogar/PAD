@@ -239,5 +239,5 @@ var updatePoints = function() {
 }
 
 var getRecord = function() {
-    return window.JSInterface.getRecord("MG", currentL);
+    return window.JSInterface.getRecord("FTS", currentL);
 }
