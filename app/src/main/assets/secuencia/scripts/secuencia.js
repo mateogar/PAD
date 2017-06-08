@@ -171,9 +171,9 @@ function comparateInverse(a, b) {
 function finish() {
     $('#board').remove();
     var recPoints = getRecord();
-if (totalHits > recPoints) {
-    updatePoints();
-}
+    if (success > recPoints) {
+        updatePoints();
+    }
 
     html = '<div class="row">';
     html += '<div id="finish" class="alert alert-warning col-xs-12">The time has finished.<strong> You got ' + success + ' hits in ' + round + ' rounds.</strong>';
