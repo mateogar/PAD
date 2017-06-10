@@ -4,6 +4,7 @@ var MAX_COLUM = 6
 var MIN_VALUE = -9;
 var MAX_VALUE = 9;
 var numButtons = 2;
+var maxButtons;
 var id;
 
 var round = 1;
@@ -15,7 +16,7 @@ var randValues = [];
 
 
 var level = ['LOW', 'MEDIUM', 'HIGH'];
-
+var lastClick = true;
 var currentL;
 
 
@@ -29,30 +30,39 @@ $(document).ready(function() {
 
     // END HEADER PART
     let levelURL = document.URL.split("?")[1];
-let levelEnd = levelURL.split("=");
-if (levelEnd[0] == "level") {
-    levelEnd = levelEnd[1];
-}
+    let levelEnd = levelURL.split("=");
+    if (levelEnd[0] == "level") {
+        levelEnd = levelEnd[1];
+    }
 
-    levelEnd = "LOW";
     initializeVariables(levelEnd);
     showRules();
-
-
 });
-
 
 function initializeVariables(currentLevel) {
     if (currentLevel === level[0]) {
         currentL = level[0];
+        numButtons = 1;
+        maxButtons = 4;
     } else if (currentLevel === level[1]) {
         currentL = level[1];
+        numButtons = 2;
+        maxButtons = 5;
     } else {
         currentL = level[2];
+        numButtons = 3;
+        maxButtons = 6;
     }
 }
 
-
+function showRules() {
+    html = '<div class="row rules">';
+    html += '<div id="info-rules" class="alert alert-warning col-xs-12">';
+    html += '<h3>You must click the circles in order. If the color of the circle is <span class="blue">BLUE</span> the order is ascending. If the circle is <span class="red">RED</span> the order is descending</h3>';
+    html += '</div><button id="rules-btn" class="btn-block btn-primary" onclick="initGame()">Start!</button>';
+    html += '</div>';
+    $('body').append(html);
+}
 
 function initGame() {
     $('.rules').remove();
@@ -81,11 +91,10 @@ function initializeBoard() {
 }
 
 function initializeRound() {
-
-    randSense = numRandom(0, 1);
-    if (numButtons < 6) {
+    if (numButtons < maxButtons && lastClick) {
         numButtons++;
     }
+
     for (i = 0; i < numButtons; i++) {
         //Generamos la posiciones que tendrán un boton
         randP = numRandom(1, MAX_FILAS * MAX_COLUM);
@@ -102,6 +111,7 @@ function initializeRound() {
         randValues[i] = randValue;
     }
 
+    randSense = numRandom(0, 1);
     if (randSense) {
         randValues.sort(comparate);
     } else {
@@ -115,7 +125,6 @@ function initializeRound() {
     }
 
     appendButtons(img);
-
 }
 
 function numRandom(min, max) {
@@ -125,14 +134,11 @@ function numRandom(min, max) {
     return parseInt(min) + rand;
 }
 
-
 function appendButtons(img) {
     for (i = 0; i < numButtons; i++) {
         $("#board #" + randPosition[i]).append("<img src='img/" + randValues[i] + img + ".png' class='imgBtn img-circle' id='btn" + randValues[i] + "' onclick='checkClick(event)'>");
     }
 }
-
-
 
 function play() {
     round++;
@@ -149,6 +155,7 @@ function resetBoard() {
 function checkClick(event) {
     val = event.target.id.substring(3);
     if (val == randValues[0]) {
+        lastClick = true;
         randValues.shift();
         $('#' + event.target.id).remove();
         if (randValues.length == 0) {
@@ -156,6 +163,7 @@ function checkClick(event) {
             play();
         }
     } else {
+        lastClick = false;
         play();
     }
 }
@@ -187,17 +195,6 @@ function finish() {
 }
 
 ////////HEADER PART///////////////
-///
-
-function showRules() {
-    html = '<div class="row rules">';
-    html += '<div id="info-rules" class="alert alert-warning col-xs-12">';
-    html += '<h3>You must click the circles in order. If the color of the circle is <span class="blue">BLUE</span> the order is ascending. If the circle is <span class="red">RED</span> the order is descending</h3>';
-    html += '</div><button id="rules-btn" class="btn-block btn-primary" onclick="initGame()">Start!</button>';
-    html += '</div>';
-    $('body').append(html);
-}
-
 
 function move() {
     var elem = document.getElementById("myBar");
