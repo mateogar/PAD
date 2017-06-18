@@ -2,40 +2,58 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\hlocal\MindGames\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="C:\hlocal\MindGames\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_fd8a1160ebff3cf41789fc4c737f6ddd3ff71375.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\software\programacion\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="C:\hlocal\MindGames\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_94c2f22d68d711eec9ad1d7db35813508e7f4df2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\hlocal\MindGames\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="true"
         optimize="true"
         revision="23.0.1"
         sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="C:\hlocal\MindGames\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_2e604f6aaf48f9b3aaa5c773756c9b357a48e28a.jar" />
+        <dex dex="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.1.1_5ac4b5bb62ecf6ce92b829af6d42b09d3a72657d\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\hlocal\MindGames\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="23.0.1"
         sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="C:\hlocal\MindGames\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_95a46a39514f7c3ab6703bcd301615a03d6aac74.jar" />
+        <dex dex="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.1.1_63a78a9acbaa9248a61e1c2924a2a95337ee76c4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="0236dbf1e80367570df4df7ff3b0a089203123e2">
+        <dex dex="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_47137f6ea936beff01817fed5e2e4d864a856d63\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="b71deb45c127caa37d37591ee434b5c37e96514a">
+        <dex dex="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_c34617f8a727a8ad6335a210c6433f0fa7b43638\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Carlos\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.1.1_0cc6c1b19f47ee017e4c5c2b2982f1c161f696f0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\Carlos\AndroidStudioProjects\MindGames\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.1.1_fb4311e38b97dbb36aa57fb2bb9e3845af5883d2\classes.dex" />
     </item>
 
 </items>
