@@ -10,9 +10,9 @@ import android.webkit.JavascriptInterface;
  * Created by usuario_local on 16/05/2017.
  */
 public class JavaScriptInterface {
-    private Activity activity;
+    private MainActivity activity;
 
-    public JavaScriptInterface(Activity activiy) {
+    public JavaScriptInterface(MainActivity activiy) {
         this.activity = activiy;
     }
 
@@ -64,6 +64,25 @@ public class JavaScriptInterface {
         sendIntent.putExtra(Intent.EXTRA_TEXT, message);
         sendIntent.setType("text/plain");
         this.activity.startActivity(Intent.createChooser(sendIntent, "Share with"));
+    }
+    @JavascriptInterface
+    public void putFullLayout() {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                activity.putFullLayoutView();
+            }
+        });
+    }
+
+    @JavascriptInterface
+    public void putGeneralLayout(){
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                activity.putGeneralLayoutView();
+            }
+        });
     }
 
     @JavascriptInterface

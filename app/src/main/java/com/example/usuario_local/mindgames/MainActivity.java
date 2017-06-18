@@ -74,4 +74,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     }
+
+    public void putFullLayoutView(){
+        getSupportActionBar().hide();
+    }
+
+    public void putGeneralLayoutView(){
+        getSupportActionBar().show();
+    }
 }
