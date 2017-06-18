@@ -135,6 +135,7 @@
 
 
     function initGame() {
+        window.JSInterface.putFullLayout();
         $('.rules').remove();
         move();
         initializeRound();
@@ -173,6 +174,7 @@
     }
 
     function finish() {
+
         $('#board').remove();
 
         var recPoints = getRecord();
@@ -192,7 +194,7 @@
         html += '<button id="share" class="btn-block btn-primary" onclick="share()">Share your score!</button>';
         html += '</div>';
         $('body').append(html);
-
+        window.JSInterface.putGeneralLayout();
     }
 
 

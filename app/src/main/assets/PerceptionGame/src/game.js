@@ -41,6 +41,7 @@ var startGame = function(lvl) {
 }
 
 var initGame = function() {
+    window.JSInterface.putFullLayout();
     $('.rules').remove();
     //move();
     initTemplate();
@@ -200,7 +201,7 @@ function finish() {
     html += '<button id="share" class="btn-block btn-primary" onclick="share()">Share your score!</button>';
     html += '</div>';
     $('body').append(html);
-
+    window.JSInterface.putGeneralLayout();
 }
 
 

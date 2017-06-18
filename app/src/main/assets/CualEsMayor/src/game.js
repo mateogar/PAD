@@ -74,6 +74,7 @@ function showRules() {
 }
 
 function initGame() {
+    window.JSInterface.putFullLayout();
     $('.rules').remove();
 
     initTemplate();
@@ -180,7 +181,7 @@ function finish() {
     html += '<button id="share" class="btn-block btn-primary" onclick="share()">Share your score!</button>';
     html += '</div>';
     $('body').append(html);
-
+    window.JSInterface.putGeneralLayout();
 }
 
 
